@@ -35,7 +35,6 @@ namespace API.Controllers
             var data = await _tokenRepo.ListAsync(spec);
             var dataMap = _mapper.Map<IReadOnlyList<Token>, IReadOnlyList<TokenDto>>(data);
             return Ok(new Pagination<TokenDto>(specParams.PageIndex, specParams.PageSize, totalItems, dataMap));
-            // return Ok(dataMap);
         }
         // [Cached(600)]
         [HttpGet("{id}")]
