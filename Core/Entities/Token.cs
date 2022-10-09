@@ -11,18 +11,16 @@ namespace Core.Entities
         }
 
         public Token(string tokenUID, string tokenName, 
-            string buyerEmail,
             string donatorUID,
             Product product)
         {
             TokenUID = tokenUID;
-            TokenName = tokenName;
-            BuyerEmail = buyerEmail;    
+            TokenName = tokenName; 
             Product = product;
             ProductId = product.Id;
             StoreUID = product.StoreUID;            
             RecipientUID = "00000000-0000-0000-0000-000000000000";
-            DonatorUID = "00000000-0000-0000-0000-000000000000";
+            DonatorUID = donatorUID;
             CostPrice = product.Price;
             SalesPrice = 0;
             ImageUrl = "images/tokens/hourglass.png";
@@ -37,8 +35,6 @@ namespace Core.Entities
         [StringLength(38)]
         public string DonatorUID { get; set; }
         public Donator Donator{ get; set; }
-        public string BuyerEmail { get; set; }       
-        public string AppUserId { get; set; }   
 
         [Column(TypeName = "char(38)")]
         [StringLength(38)]

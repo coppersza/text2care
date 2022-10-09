@@ -14,8 +14,12 @@ namespace Infrastructure.Data
         }
         public DbSet<Store> Stores { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductType> ProductTypes { get; set; }
-        
+        public DbSet<ProductType> ProductTypes { get; set; }       
+        public DbSet<Country> Countries { get; set; }
+
+        public DbSet<Donator> Donators { get; set; }
+        public DbSet<Recipient> Recipients { get; set; }
+        public DbSet<Token> Tokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
