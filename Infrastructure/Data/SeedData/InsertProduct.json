@@ -13,7 +13,7 @@
 		"Id" : 2,
 		"Name" : "Sanitary",
 		"Description" : "Random Sanitary",
-		"Price" : 0.00,
+		"Price" : 3.01,
 		"ImageUrl" : "images/products/random2.jpg",
 		"ProductTypeId" : 2,
 		"StoreUID" : "00000000-0000-0000-0000-000000000000",
@@ -23,9 +23,9 @@
 		"Id" : 3,
 		"Name" : "Pet Food",
 		"Description" : "Random Pet Food",
-		"Price" : 0.00,
+		"Price" : 3.02,
 		"ImageUrl" : "images/products/gloria.jpg",
-		"ProductTypeId" : 4,
+		"ProductTypeId" : 3,
 		"StoreUID" : "00000000-0000-0000-0000-000000000000",
 		"IsActive" : true
 	},
@@ -33,11 +33,11 @@
 		"Id" : 4,
 		"Name" : "Disaster Relief",
 		"Description" : "Random Disaster Relief",
-		"Price" : 0.00,
+		"Price" : 3.04,
 		"ImageUrl" : "images/products/flood.jpg",
-		"ProductTypeId" : 5,
+		"ProductTypeId" : 4,
 		"StoreUID" : "00000000-0000-0000-0000-000000000000",
-		"IsActive" : false
+		"IsActive" : true
 	},
 	{
 		"Id" : 5,
