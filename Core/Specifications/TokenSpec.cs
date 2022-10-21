@@ -13,11 +13,10 @@ namespace Core.Specifications
                 (string.IsNullOrEmpty(specParams.DonatorEmail) || x.Donator.EmailAddress == specParams.DonatorEmail) )
         {
             AddInclude(x => x.Product);
-            AddInclude("Product.Store");           
-            AddInclude("Product.ProductType"); 
-
+            AddInclude(x => x.Store);            
             AddInclude(x => x.Recipient);
             AddInclude(x => x.Donator);
+            AddInclude("Product.ProductType"); 
 
             AddOrderBy(x => x.TokenName);
             ApplyPaging(specParams.PageSize * (specParams.PageIndex - 1), specParams.PageSize);
@@ -40,11 +39,10 @@ namespace Core.Specifications
         public TokenSpec(string id) : base(x => x.TokenUID == id)
         {
             AddInclude(x => x.Product);
-            AddInclude("Product.Store");
-            AddInclude("Product.ProductType");
-
-            AddInclude(x => x.Recipient);     
-            AddInclude(x => x.Donator);       
+            AddInclude(x => x.Store);            
+            AddInclude(x => x.Recipient);
+            AddInclude(x => x.Donator);
+            AddInclude("Product.ProductType"); 
         }     
 
         

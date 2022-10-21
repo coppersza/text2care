@@ -18,7 +18,6 @@ namespace Core.Specifications
         public string DonatorUID { get; set; }        
         public string DonatorEmail { get; set; }  
         public int? ProductTypeId { get; set; }
-        public int? ProductId { get; set; }
 
         public string Sort { get; set; }
 

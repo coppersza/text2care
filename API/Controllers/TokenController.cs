@@ -29,7 +29,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<TokenDto>>> GetTokens([FromQuery]TokenSpecParams specParams)        
         {
             var spec = new TokenSpec(specParams);
-            var countSpec = new TokenSpec(specParams);
+            var countSpec = new TokenSpecCount(specParams);
             var totalItems = await _tokenRepo.CountAsync(countSpec);
 
             var data = await _tokenRepo.ListAsync(spec);
