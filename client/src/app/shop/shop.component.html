@@ -3,7 +3,6 @@
   <div class="row">
     <section class="col-3">
       <ng-container *ngIf="stores && productTypes">
-
         <h5 class="text-warning ms-3">Sort</h5>
         <select class="form-select my-2" (change)="onSortSelected($any($event.target).value)">
           <option *ngFor="let sort of sortOptions"
@@ -30,7 +29,6 @@
             (click)="onProductTypeSelected(item.id)">{{item.name}}
           </li>
         </ul>
-
       </ng-container>
     </section>
 
@@ -63,7 +61,7 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-center" *ngIf="totalCount && totalCount > 0">
+      <div class="d-flex justify-content-center" *ngIf="totalCount && totalCount > shopParams.pageSize">
         <app-pager
           [pageSize]="shopParams.pageSize"
           [totalCount]="totalCount"
@@ -75,6 +73,6 @@
     </section>
   </div>
   <!-- TODO : Change to component -->
-  <app-shop-details></app-shop-details>
+  <app-shop-details [store]="store"></app-shop-details>
 </div>
 

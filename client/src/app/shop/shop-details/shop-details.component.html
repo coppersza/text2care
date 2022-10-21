@@ -1,1 +1,25 @@
-<p>shop-details works!</p>
+<div *ngIf="store && store.storeUID !== '00000000-0000-0000-0000-000000000000'">
+  <div class="card h-100 shadow-sm" >
+    <div class="row">
+      <section class="col-3">
+        <!-- <div class="image position-relative" style="cursor:pointer;"> -->
+            <img src="{{store.imageUrl}}" alt="{{store.storeName}}"   class="img-fluid"
+            style="object-fit:cover;
+             object-position: center;
+             width:200px;
+             height:200px;
+             border: none 0px #CCC;
+             cursor: pointer;"/>
+        <!-- </div> -->
+      </section>
+      <section class="col-9">
+        <!-- <div class="d-flex justify-content-between align-items-center pb-2"> -->
+          <h4>{{store.storeName}}</h4>
+          <p>{{store.fullName}}</p>
+          <p>{{store.country}}</p>
+          <p>{{store.description}}</p>
+        <!-- </div> -->
+      </section>
+    </div>
+  </div>
+</div>
