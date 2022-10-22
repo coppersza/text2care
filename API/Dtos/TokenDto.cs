@@ -10,6 +10,7 @@ namespace API.Dtos
         public string DonatorName{ get; set; }
         public string DonatorEmail { get; set; }
         public string StoreName{ get; set; }
+        public int ProductId{ get; set; }
         public string ProductType{ get; set; }      
         public string ProductName{ get; set; }
         public string RecipientName{ get; set; }      

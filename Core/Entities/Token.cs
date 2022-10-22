@@ -10,7 +10,8 @@ namespace Core.Entities
         {
         }
 
-        public Token(string tokenUID, string tokenName, 
+        public Token(string tokenUID, 
+            string tokenName, 
             string donatorUID,
             Product product)
         {

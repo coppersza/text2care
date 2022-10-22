@@ -49,7 +49,7 @@ export class TokenService {
     params = params.append('pageIndex', this.tokenParams.pageNumber.toString());
     params = params.append('pageSize', this.tokenParams.pageSize.toString());
 
-    return this.http.get<TokenPagination>(this.baseUrl + 'token', {observe: 'response', params})
+    return this.http.get<TokenPagination>(this.baseUrl + 'tokenuser', {observe: 'response', params})
       .pipe(
         map(response =>{
 
