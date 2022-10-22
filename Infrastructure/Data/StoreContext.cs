@@ -1,6 +1,7 @@
 
 using System.Reflection;
 using Core.Entities;
+using Core.Entities.OrderAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -16,11 +17,14 @@ namespace Infrastructure.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }       
         public DbSet<Country> Countries { get; set; }
-
         public DbSet<Donator> Donators { get; set; }
         public DbSet<Recipient> Recipients { get; set; }
+        public DbSet<StoreRecipient> StoreRecipients { get; set; }
         public DbSet<Token> Tokens { get; set; }
-
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<TokenMessage> TokenMessages { get; set; }        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

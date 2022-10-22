@@ -181,6 +181,83 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("Employee");
                 });
 
+            modelBuilder.Entity("Core.Entities.OrderAggregate.DeliveryMethod", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("DeliveryTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ShortName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DeliveryMethod");
+                });
+
+            modelBuilder.Entity("Core.Entities.OrderAggregate.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("BuyerEmail")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeliveryMethodId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PaymentIntentId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Subtotal")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DeliveryMethodId");
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("Core.Entities.OrderAggregate.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderItem");
+                });
+
             modelBuilder.Entity("Core.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -425,12 +502,6 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(38)
                         .HasColumnType("char(38)");
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("BuyerEmail")
-                        .HasColumnType("TEXT");
-
                     b.Property<double>("CostPrice")
                         .HasColumnType("decimal(18,2)");
 
@@ -510,6 +581,86 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("Token");
                 });
 
+            modelBuilder.Entity("Core.Entities.TokenMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DateSent")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmailText")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsSent")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("MessageText")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MessageType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TokenUID")
+                        .HasMaxLength(38)
+                        .HasColumnType("char(38)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TokenMessage");
+                });
+
+            modelBuilder.Entity("Core.Entities.Transaction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("CostPrice")
+                        .HasColumnType("REAL");
+
+                    b.Property<DateTime>("DatePurchased")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("DonatorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("DonatorUID")
+                        .HasMaxLength(38)
+                        .HasColumnType("char(38)");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("EmployeeUID")
+                        .HasMaxLength(38)
+                        .HasColumnType("char(38)");
+
+                    b.Property<int>("MealsPerMonth")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MealsPerWeek")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Recurring")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("StoreId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("StoreUID")
+                        .HasMaxLength(38)
+                        .HasColumnType("char(38)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Transaction");
+                });
+
             modelBuilder.Entity("Core.Entities.Donator", b =>
                 {
                     b.HasOne("Core.Entities.Country", "Country")
@@ -530,6 +681,81 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("Core.Entities.OrderAggregate.Order", b =>
+                {
+                    b.HasOne("Core.Entities.OrderAggregate.DeliveryMethod", "DeliveryMethod")
+                        .WithMany()
+                        .HasForeignKey("DeliveryMethodId");
+
+                    b.OwnsOne("Core.Entities.OrderAggregate.Address", "ShipToAddress", b1 =>
+                        {
+                            b1.Property<int>("OrderId")
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<string>("City")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("FirstName")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("LastName")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("State")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Street")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("ZipCode")
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("OrderId");
+
+                            b1.ToTable("Address");
+
+                            b1.WithOwner()
+                                .HasForeignKey("OrderId");
+                        });
+
+                    b.Navigation("DeliveryMethod");
+
+                    b.Navigation("ShipToAddress")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Core.Entities.OrderAggregate.OrderItem", b =>
+                {
+                    b.HasOne("Core.Entities.OrderAggregate.Order", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.OwnsOne("Core.Entities.OrderAggregate.ProductItemOrdered", "ItemOrdered", b1 =>
+                        {
+                            b1.Property<int>("OrderItemId")
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<string>("ImageUrl")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<int>("ProductItemId")
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<string>("ProductName")
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("OrderItemId");
+
+                            b1.ToTable("ProductItemOrdered");
+
+                            b1.WithOwner()
+                                .HasForeignKey("OrderItemId");
+                        });
+
+                    b.Navigation("ItemOrdered");
                 });
 
             modelBuilder.Entity("Core.Entities.Product", b =>
@@ -613,6 +839,11 @@ namespace Infrastructure.Data.Migrations
                     b.Navigation("Recipient");
 
                     b.Navigation("Store");
+                });
+
+            modelBuilder.Entity("Core.Entities.OrderAggregate.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 #pragma warning restore 612, 618
         }

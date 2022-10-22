@@ -13,7 +13,10 @@ namespace API.Extensions
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IBasketRepository, BasketRespository>();
             services.AddScoped<IUserTokenService, UserTokenService>();
-            
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); 
+            services.AddScoped<IPaymentService, PaymentService>();
+
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.InvalidModelStateResponseFactory = actionContext =>

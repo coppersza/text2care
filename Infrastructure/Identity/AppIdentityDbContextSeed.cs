@@ -38,7 +38,7 @@ namespace Infrastructure.Identity
                     DisplayName = "Rob",
                     Email = "robert.copley@gmail.com",
                     UserName = "robert.copley",
-                    Address = new Address{
+                    Address = new UserAddress{
                         FirstName = "Rob",
                         LastName = "Copley",
                         Street = "Shuter Road",
