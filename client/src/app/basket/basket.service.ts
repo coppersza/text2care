@@ -51,6 +51,7 @@ export class BasketService {
     return this.http.post(this.baseUrl + 'basket', basket)
       .subscribe((response: IBasket) => {
         this.basketSource.next(response);
+        console.log(response);
         this.calculateTotals();
       }, error => {
         console.log(error);

@@ -7,6 +7,7 @@ using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
 
 namespace API
 {
@@ -28,6 +29,13 @@ namespace API
             services.AddControllers();
             services.AddDbContext<StoreContext>(x => 
                 x.UseSqlite(_configuration.GetConnectionString("DefaultSQLiteConnection")));
+
+            services.AddSingleton<IConnectionMultiplexer, ConnectionMultiplexer>(c => {
+                var configuration = ConfigurationOptions.Parse(_configuration.GetConnectionString("RedisLocal"), true);
+                configuration.ClientName = "Text2CareApp-RedisCacheProvider";
+                configuration.ReconnectRetryPolicy = new ExponentialRetry(5000, 10000);
+                return ConnectionMultiplexer.Connect(configuration);
+            });
 
             services.AddApplicationServices();
 

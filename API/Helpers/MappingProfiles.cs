@@ -26,6 +26,8 @@ namespace API.Helpers
                 .ForMember(d => d.Country, o => o.MapFrom(s => s.Country.Name))
                 .ForMember(d => d.ImageUrl, o => o.MapFrom<StoreUrlResolver>());
                 
+            CreateMap<CustomerBasketDto, CustomerBasket>();
+            CreateMap<BasketItemDto, BasketItem>();                 
 
         }
     }
