@@ -1,12 +1,9 @@
-using API.Errors;
 using API.Extensions;
 using API.Helpers;
 using API.Middleware;
-using Core.Interfaces;
 using Infrastructure.Data;
-using Microsoft.AspNetCore.Mvc;
+using Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 using StackExchange.Redis;
 
 namespace API
@@ -29,7 +26,9 @@ namespace API
             services.AddControllers();
             services.AddDbContext<StoreContext>(x => 
                 x.UseSqlite(_configuration.GetConnectionString("DefaultSQLiteConnection")));
-
+            services.AddDbContext<AppIdentityDbContext>(x => 
+                x.UseSqlite(_configuration.GetConnectionString("DefaultSQLiteConnection")));                
+            
             services.AddSingleton<IConnectionMultiplexer, ConnectionMultiplexer>(c => {
                 var configuration = ConfigurationOptions.Parse(_configuration.GetConnectionString("RedisLocal"), true);
                 configuration.ClientName = "Text2CareApp-RedisCacheProvider";
@@ -38,7 +37,7 @@ namespace API
             });
 
             services.AddApplicationServices();
-
+            services.AddIdentityServices(_configuration);
             services.AddSwaggerDocumentation();
 
             services.AddCors(opt => {
@@ -62,7 +61,8 @@ namespace API
             app.UseStaticFiles();
 
             app.UseCors("CorsPolicy");
-
+            
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseSwaggerDocumentation();
 
