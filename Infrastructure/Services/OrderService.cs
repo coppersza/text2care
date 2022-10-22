@@ -37,7 +37,11 @@ namespace Infrastructure.Services
                 items.Add(orderItem);
             }
             //get delivery method from repo
+            if (deliveryMethodId == 0){
+                deliveryMethodId = 1;
+            }
             var deliveryMethod = await _unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
+            
             //calc subtotal
             var subtotal = items.Sum(item => item.Price * item.Quantity);
             

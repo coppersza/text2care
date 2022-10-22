@@ -87,9 +87,6 @@ namespace Infrastructure.Services
             var buyerEmail = order.BuyerEmail;
             
             var orderItems = order.OrderItems;
-            // var specItem = new OrdersWithItemsAndOrderingSpecification(paymentIntentId);
-            // var orderItem = await _unitOfWork.Repository<Order>().GetEntityWithSpec(specItem);  
-
             if (order == null) return null;
 
             order.Status = OrderStatus.PaymentReceived;
