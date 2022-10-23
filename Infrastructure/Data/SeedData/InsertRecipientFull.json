@@ -3,7 +3,7 @@
 		"RecipientUID" : "00000000-0000-0000-0000-000000000000",
 		"FullName" : "Random",
 		"Description" : "Random Description",
-		"ImageUrl" : "",
+		"ImageURL" : "",
         "CountryId" : 1
 	},
 	{

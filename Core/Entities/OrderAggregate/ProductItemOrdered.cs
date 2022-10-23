@@ -12,12 +12,12 @@ namespace Core.Entities.OrderAggregate
         {
             ProductItemId = productItemId;
             ProductName = productName;
-            ImageUrl = imageUrl;
+            ImageURL = imageUrl;
         }
 
         public int ProductItemId { get; set; }
         public string ProductName { get; set; }
 
-        public string ImageUrl { get; set; }
+        public string ImageURL { get; set; }
     }
 }

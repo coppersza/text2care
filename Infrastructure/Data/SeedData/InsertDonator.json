@@ -4,7 +4,7 @@
 		"FullName" : "Text2Care",
 		"Description" : "Text2Care",
         "EmailAddress" : "rob@test.com",
-		"ImageUrl" : "images/products/1.jpg",
+		"ImageURL" : "images/products/1.jpg",
         "CountryId" : 1
 	},
 	{
@@ -12,7 +12,7 @@
 		"FullName" : "CutTavern",
 		"Description" : "CutTavern",
 		"EmailAddress" : "rob1@test.com",
-		"ImageUrl" : "images/products/2.jpg",
+		"ImageURL" : "images/products/2.jpg",
         "CountryId" : 1
 	},
 	{
@@ -20,7 +20,7 @@
 		"FullName" : "Adelaide Laser",
 		"Description" : "Adelaide Laser",
 		"EmailAddress" : "robert.copley@gmail.com",
-		"ImageUrl" : "images/products/3.jpg",
+		"ImageURL" : "images/products/3.jpg",
         "CountryId" : 1
 	}
 ]

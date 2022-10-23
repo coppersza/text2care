@@ -1111,28 +1111,7 @@
 		"Latitude" : 0,
 		"Longitude" : 0,
 		"EmployeeUID" : "137E1570-155C-40EC-BC9C-ADED02CFC0B9"
-	},
-	{
-		"DonatorUID" : "C1C3C17E-CB29-4940-8C93-58329A7A5478",
-		"FirstName" : "Bryan",
-		"Surname" : "Grant",
-		"FullName" : "Delete",
-		"MobileNumber" : "",
-		"EmailAddress" : "bundigrant@gmail.com",
-		"Address" : null,
-		"Address2" : null,
-		"Suburb" : null,
-		"City" : null,
-		"PostalCode" : null,
-		"CountryId" : 2,
-		"DefaultToken" : null,
-		"ImageURL" : null,
-		"PortalUser" : "T2C AUS",
-		"PortalPassword" : "t2cAustralia#2021",
-		"Latitude" : 0,
-		"Longitude" : 0,
-		"EmployeeUID" : "00000000-0000-0000-0000-000000000000"
-	},
+	},	
 	{
 		"DonatorUID" : "D1177118-EB41-4322-B25C-456CC6CA13BF",
 		"FirstName" : "Rachel",
@@ -1343,27 +1322,7 @@
 		"Longitude" : 0,
 		"EmployeeUID" : "00000000-0000-0000-0000-000000000000"
 	},
-	{
-		"DonatorUID" : "F35708E7-3024-4C7F-9C83-96A426AA7E44",
-		"FirstName" : "Michelle Christmas",
-		"Surname" : "61415629819",
-		"FullName" : "Michelle Christmas 61415629819",
-		"MobileNumber" : "Michelle ",
-		"EmailAddress" : "Christmas",
-		"Address" : null,
-		"Address2" : null,
-		"Suburb" : null,
-		"City" : null,
-		"PostalCode" : null,
-		"CountryId" : 1,
-		"DefaultToken" : null,
-		"ImageURL" : null,
-		"PortalUser" : null,
-		"PortalPassword" : null,
-		"Latitude" : 0,
-		"Longitude" : 0,
-		"EmployeeUID" : "00000000-0000-0000-0000-000000000000"
-	},
+	
 	{
 		"DonatorUID" : "F431CC9C-BFD1-4026-8E13-02703E53AFF8",
 		"FirstName" : "Clinton",

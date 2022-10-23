@@ -36,7 +36,6 @@ namespace Infrastructure.Services
 
             if (basket == null) return null;
 
-
             var shippingPrice = 0m;
 
             if (basket.DeliveryMethodId.HasValue)

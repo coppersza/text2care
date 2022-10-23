@@ -58,19 +58,20 @@ namespace Infrastructure.Data.Migrations
                 name: "TokenMessage",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    TokenMessageID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    TokenUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
-                    MessageText = table.Column<string>(type: "text", nullable: true),
-                    MessageType = table.Column<string>(type: "text", nullable: true),
-                    EmailAddress = table.Column<string>(type: "text", nullable: true),
-                    EmailText = table.Column<string>(type: "text", nullable: true),
+                    TokenUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: false),
+                    SMSPortalUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
+                    MessageText = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    MessageType = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true),
+                    EmailAddress = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    EmailText = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true),
                     DateSent = table.Column<DateTime>(type: "datetime", nullable: false),
-                    IsSent = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    IsSent = table.Column<ulong>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TokenMessage", x => x.Id);
+                    table.PrimaryKey("PK_TokenMessage", x => x.TokenMessageID);
                 });
 
             migrationBuilder.CreateTable(
@@ -78,25 +79,23 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     DonatorUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    ImageUrl = table.Column<string>(type: "text", nullable: true),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    Surname = table.Column<string>(type: "text", nullable: true),
-                    FullName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    Nickname = table.Column<string>(type: "text", nullable: true),
-                    MobileNumber = table.Column<string>(type: "text", nullable: true),
-                    EmailAddress = table.Column<string>(type: "text", nullable: true),
-                    Address = table.Column<string>(type: "text", nullable: true),
-                    Address2 = table.Column<string>(type: "text", nullable: true),
-                    Suburb = table.Column<string>(type: "text", nullable: true),
-                    City = table.Column<string>(type: "text", nullable: true),
-                    PostalCode = table.Column<string>(type: "text", nullable: true),
+                    FirstName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    Surname = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    FullName = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: false),
+                    MobileNumber = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    EmailAddress = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    Address = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Address2 = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Suburb = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    City = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    PostalCode = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
                     CountryId = table.Column<int>(type: "int", nullable: false),
-                    DefaultToken = table.Column<string>(type: "text", nullable: true),
-                    PortalUser = table.Column<string>(type: "text", nullable: true),
-                    PortalPassword = table.Column<string>(type: "text", nullable: true),
-                    Latitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    Longitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    DefaultToken = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
+                    ImageURL = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    PortalUser = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    PortalPassword = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    Latitude = table.Column<float>(type: "float", nullable: false),
+                    Longitude = table.Column<float>(type: "float", nullable: false),
                     EmployeeUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true)
                 },
                 constraints: table =>
@@ -115,25 +114,23 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     EmployeeUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    ImageUrl = table.Column<string>(type: "text", nullable: true),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    Surname = table.Column<string>(type: "text", nullable: true),
-                    FullName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    Nickname = table.Column<string>(type: "text", nullable: true),
-                    MobileNumber = table.Column<string>(type: "text", nullable: true),
-                    EmailAddress = table.Column<string>(type: "text", nullable: true),
-                    Address = table.Column<string>(type: "text", nullable: true),
-                    Address2 = table.Column<string>(type: "text", nullable: true),
-                    Suburb = table.Column<string>(type: "text", nullable: true),
-                    City = table.Column<string>(type: "text", nullable: true),
-                    PostalCode = table.Column<string>(type: "text", nullable: true),
+                    FirstName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    Surname = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    FullName = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: false),
+                    MobileNumber = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    EmailAddress = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    Address = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Address2 = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Suburb = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    City = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    PostalCode = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
                     CountryId = table.Column<int>(type: "int", nullable: false),
-                    DefaultToken = table.Column<string>(type: "text", nullable: true),
-                    PortalUser = table.Column<string>(type: "text", nullable: true),
-                    PortalPassword = table.Column<string>(type: "text", nullable: true),
-                    Latitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    Longitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false)
+                    DefaultToken = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
+                    ImageURL = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    PortalUser = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    PortalPassword = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    Latitude = table.Column<float>(type: "float", nullable: false),
+                    Longitude = table.Column<float>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -151,25 +148,24 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     RecipientUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    ImageUrl = table.Column<string>(type: "text", nullable: true),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    Surname = table.Column<string>(type: "text", nullable: true),
-                    FullName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    FirstName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    Surname = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    FullName = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: false),
                     Nickname = table.Column<string>(type: "text", nullable: true),
-                    MobileNumber = table.Column<string>(type: "text", nullable: true),
-                    EmailAddress = table.Column<string>(type: "text", nullable: true),
-                    Address = table.Column<string>(type: "text", nullable: true),
-                    Address2 = table.Column<string>(type: "text", nullable: true),
-                    Suburb = table.Column<string>(type: "text", nullable: true),
-                    City = table.Column<string>(type: "text", nullable: true),
-                    PostalCode = table.Column<string>(type: "text", nullable: true),
+                    MobileNumber = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    EmailAddress = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    Address = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Address2 = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Suburb = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    City = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    PostalCode = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
                     CountryId = table.Column<int>(type: "int", nullable: false),
-                    DefaultToken = table.Column<string>(type: "text", nullable: true),
-                    PortalUser = table.Column<string>(type: "text", nullable: true),
-                    PortalPassword = table.Column<string>(type: "text", nullable: true),
-                    Latitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    Longitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    DefaultToken = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
+                    ImageURL = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    PortalUser = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    PortalPassword = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    Latitude = table.Column<float>(type: "float", nullable: false),
+                    Longitude = table.Column<float>(type: "float", nullable: false),
                     EmployeeUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true)
                 },
                 constraints: table =>
@@ -189,25 +185,24 @@ namespace Infrastructure.Data.Migrations
                 {
                     StoreUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: false),
                     StoreName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    ImageUrl = table.Column<string>(type: "text", nullable: true),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    Surname = table.Column<string>(type: "text", nullable: true),
-                    FullName = table.Column<string>(type: "text", nullable: true),
-                    Nickname = table.Column<string>(type: "text", nullable: true),
-                    MobileNumber = table.Column<string>(type: "text", nullable: true),
-                    EmailAddress = table.Column<string>(type: "text", nullable: true),
-                    Address = table.Column<string>(type: "text", nullable: true),
-                    Address2 = table.Column<string>(type: "text", nullable: true),
-                    Suburb = table.Column<string>(type: "text", nullable: true),
-                    City = table.Column<string>(type: "text", nullable: true),
-                    PostalCode = table.Column<string>(type: "text", nullable: true),
+                    FirstName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    Surname = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    FullName = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    Nickname = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    MobileNumber = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    EmailAddress = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    Address = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Address2 = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Suburb = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    City = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    PostalCode = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
                     CountryId = table.Column<int>(type: "int", nullable: false),
-                    DefaultToken = table.Column<string>(type: "text", nullable: true),
-                    PortalUser = table.Column<string>(type: "text", nullable: true),
-                    PortalPassword = table.Column<string>(type: "text", nullable: true),
-                    Latitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    Longitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false)
+                    DefaultToken = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
+                    ImageURL = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    PortalUser = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    PortalPassword = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    Latitude = table.Column<float>(type: "float", nullable: false),
+                    Longitude = table.Column<float>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -253,7 +248,7 @@ namespace Infrastructure.Data.Migrations
                     Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ImageUrl = table.Column<string>(type: "text", nullable: true),
+                    ImageURL = table.Column<string>(type: "text", nullable: true),
                     ProductTypeId = table.Column<int>(type: "int", nullable: false),
                     StoreUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
                     IsActive = table.Column<bool>(type: "tinyint(1)", nullable: false)
@@ -357,20 +352,21 @@ namespace Infrastructure.Data.Migrations
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     StoreMealUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
                     RecipientUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
-                    CostPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SalesPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CostPrice = table.Column<float>(type: "float", nullable: false),
+                    SalesPrice = table.Column<float>(type: "float", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime", nullable: false),
                     DateStoreAssigned = table.Column<DateTime>(type: "datetime", nullable: false),
                     DateAssigned = table.Column<DateTime>(type: "datetime", nullable: false),
                     DateCollected = table.Column<DateTime>(type: "datetime", nullable: false),
                     DateRelease = table.Column<DateTime>(type: "datetime", nullable: false),
                     DateExpire = table.Column<DateTime>(type: "datetime", nullable: false),
-                    FoodCollected = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Valid = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    ImageUrl = table.Column<string>(type: "text", nullable: true),
-                    ShortUrl = table.Column<string>(type: "text", nullable: true),
-                    RecipientName = table.Column<string>(type: "text", nullable: true),
-                    DonatorName = table.Column<string>(type: "text", nullable: true)
+                    FoodCollected = table.Column<ulong>(type: "bit", nullable: false),
+                    Valid = table.Column<ulong>(type: "bit", nullable: false),
+                    ImageURL = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    ShortURL = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    Description = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    RecipientName = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
+                    DonatorName = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -447,7 +443,7 @@ namespace Infrastructure.Data.Migrations
                     OrderItemId = table.Column<int>(type: "int", nullable: false),
                     ProductItemId = table.Column<int>(type: "int", nullable: false),
                     ProductName = table.Column<string>(type: "text", nullable: true),
-                    ImageUrl = table.Column<string>(type: "text", nullable: true)
+                    ImageURL = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

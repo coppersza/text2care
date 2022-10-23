@@ -11,8 +11,15 @@ namespace Infrastructure.Data.Config
         {
             builder.Property(t => t.TokenUID).IsRequired();
             builder.Property(t => t.TokenName).IsRequired().HasMaxLength(25);
-            builder.Property(t => t.CostPrice).HasColumnType("decimal(18,2)");
-            builder.Property(t => t.SalesPrice).HasColumnType("decimal(18,2)");
+            // builder.Property(t => t.CostPrice).HasColumnType("decimal(18,2)");
+            // builder.Property(t => t.SalesPrice).HasColumnType("decimal(18,2)");
+            builder.Property(p => p.ImageURL).HasMaxLength(250);
+            builder.Property(p => p.ShortURL).HasMaxLength(250);
+            builder.Property(p => p.Description).HasMaxLength(250);
+            builder.Property(p => p.RecipientName).HasMaxLength(250);
+            builder.Property(p => p.DonatorName).HasMaxLength(250);
+            builder.Property(t => t.FoodCollected).HasColumnType("bit");
+            builder.Property(t => t.Valid).HasColumnType("bit");            
                
             builder.HasOne(b => b.Product).WithMany()
                 .HasForeignKey(t => t.ProductId);    

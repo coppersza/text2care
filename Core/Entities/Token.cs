@@ -22,9 +22,9 @@ namespace Core.Entities
             StoreUID = product.StoreUID;            
             RecipientUID = "00000000-0000-0000-0000-000000000000";
             DonatorUID = donatorUID;
-            CostPrice = product.Price;
+            CostPrice = ((float)product.Price);
             SalesPrice = 0;
-            ImageUrl = "images/tokens/hourglass.png";
+            ImageURL = "images/tokens/hourglass.png";
         }
         [Key]
         [Column(TypeName = "char(38)")]
@@ -53,8 +53,8 @@ namespace Core.Entities
         public string RecipientUID { get; set; }
         public Recipient Recipient{ get; set; }
 
-        public decimal CostPrice { get; set; }
-        public decimal SalesPrice { get; set; }
+        public float CostPrice { get; set; }
+        public float SalesPrice { get; set; }
 
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
         public DateTime DateStoreAssigned { get; set; } = DateTime.MinValue;
@@ -64,8 +64,9 @@ namespace Core.Entities
         public DateTime DateExpire { get; set; } = DateTime.UtcNow.AddDays(60) ;
         public bool FoodCollected { get; set; } = false;
         public bool Valid { get; set; } = true;
-        public string ImageUrl { get; set; }
-        public string ShortUrl { get; set; }
+        public string ImageURL { get; set; }
+        public string ShortURL { get; set; }
+        public string Description { get; set; } 
         public string RecipientName { get; set; }
         public string DonatorName { get; set; }
 

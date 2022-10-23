@@ -24,8 +24,8 @@ namespace API.Dtos
         public DateTime DateExpire { get; set; }
         public bool FoodCollected { get; set; }
         public bool Valid { get; set; }
-        public string ImageUrl { get; set; }
-        public string ShortUrl { get; set; } 
+        public string ImageURL { get; set; }
+        public string ShortURL { get; set; } 
 
     }
 }

@@ -4,7 +4,7 @@
 		"Name" : "Meal",
 		"Description" : "Random Meal",
 		"Price" : 3.00,
-		"ImageUrl" : "images/products/food.png",
+		"ImageURL" : "images/products/food.png",
 		"ProductTypeId" : 1,
 		"StoreUID" : "00000000-0000-0000-0000-000000000000",
 		"IsActive" : true
@@ -14,7 +14,7 @@
 		"Name" : "Health",
 		"Description" : "Random Health",
 		"Price" : 3.01,
-		"ImageUrl" : "images/products/firstaid.png",
+		"ImageURL" : "images/products/firstaid.png",
 		"ProductTypeId" : 2,
 		"StoreUID" : "00000000-0000-0000-0000-000000000000",
 		"IsActive" : true
@@ -24,7 +24,7 @@
 		"Name" : "Pet Food",
 		"Description" : "Random Pet Food",
 		"Price" : 3.02,
-		"ImageUrl" : "images/products/gloria.jpg",
+		"ImageURL" : "images/products/gloria.jpg",
 		"ProductTypeId" : 3,
 		"StoreUID" : "00000000-0000-0000-0000-000000000000",
 		"IsActive" : true
@@ -34,7 +34,7 @@
 		"Name" : "Disaster Relief",
 		"Description" : "Random Disaster Relief",
 		"Price" : 3.04,
-		"ImageUrl" : "images/products/flood.png",
+		"ImageURL" : "images/products/flood.png",
 		"ProductTypeId" : 4,
 		"StoreUID" : "00000000-0000-0000-0000-000000000000",
 		"IsActive" : true
@@ -44,7 +44,7 @@
 		"Name" : "Meal",
 		"Description" : "Meal Just Chicken",
 		"Price" : 3.10,
-		"ImageUrl" : "images/products/food.png",
+		"ImageURL" : "images/products/food.png",
 		"ProductTypeId" : 1,
 		"StoreUID" : "A32AB0CB-40DA-4AB6-ADD9-FB20210BB308",
 		"IsActive" : true
@@ -54,7 +54,7 @@
 		"Name" : "Health",
 		"Description" : "Health Just Chicken",
 		"Price" : 0.00,
-		"ImageUrl" : "images/products/firstaid.png",
+		"ImageURL" : "images/products/firstaid.png",
 		"ProductTypeId" : 2,
 		"StoreUID" : "A32AB0CB-40DA-4AB6-ADD9-FB20210BB308",
 		"IsActive" : false
@@ -64,7 +64,7 @@
 		"Name" : "Meal",
 		"Description" : "Meal Soul City",
 		"Price" : 3.40,
-		"ImageUrl" : "images/products/food.png",
+		"ImageURL" : "images/products/food.png",
 		"ProductTypeId" : 1,
 		"StoreUID" : "A4A5EDB5-DEBB-40E0-B991-B3D14A06E7F0",
 		"IsActive" : true
@@ -74,7 +74,7 @@
 		"Name" : "Health",
 		"Description" : "Health Soul City",
 		"Price" : 0.00,
-		"ImageUrl" : "images/products/firstaid.png",
+		"ImageURL" : "images/products/firstaid.png",
 		"ProductTypeId" : 2,
 		"StoreUID" : "A4A5EDB5-DEBB-40E0-B991-B3D14A06E7F0",
 		"IsActive" : false
@@ -84,7 +84,7 @@
 		"Name" : "Meal",
 		"Description" : "Meal Gabon Bwiti",
 		"Price" : 0.00,
-		"ImageUrl" : "images/products/food.png",
+		"ImageURL" : "images/products/food.png",
 		"ProductTypeId" : 1,
 		"StoreUID" : "EC22775F-5A67-4009-8CE8-AE628A6288D2",
 		"IsActive" : true

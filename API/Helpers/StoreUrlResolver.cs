@@ -17,9 +17,9 @@ namespace API.Helpers
 
         public string Resolve(Store source, StoreDto destination, string destMember, ResolutionContext context)
         {
-            if (!string.IsNullOrEmpty(source.ImageUrl))
+            if (!string.IsNullOrEmpty(source.ImageURL))
             {
-                return _config["ApiUrl"] + source.ImageUrl;
+                return _config["ApiUrl"] + source.ImageURL;
             }
             return null;
         }

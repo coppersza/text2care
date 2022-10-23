@@ -14,7 +14,7 @@ namespace API.Helpers
             CreateMap<Product, ProductDto>()
                 .ForMember(d => d.ProductType, o => o.MapFrom(s => s.ProductType.Name))
                 .ForMember(d => d.StoreName, o => o.MapFrom(s => s.Store.StoreName))
-                .ForMember(d => d.ImageUrl, o => o.MapFrom<ProductUrlResolver>());
+                .ForMember(d => d.ImageURL, o => o.MapFrom<ProductUrlResolver>());
 
             CreateMap<Token, TokenDto>()
                 .ForMember(d => d.ProductType, o => o.MapFrom(s => s.Product.ProductType.Name))
@@ -23,11 +23,11 @@ namespace API.Helpers
                 .ForMember(d => d.RecipientName, o => o.MapFrom(s => s.Recipient.FullName))
                 .ForMember(d => d.DonatorName, o => o.MapFrom(s => s.Donator.FullName))
                 .ForMember(d => d.DonatorEmail, o => o.MapFrom(s => s.Donator.EmailAddress))
-                .ForMember(d => d.ImageUrl, o=> o.MapFrom<TokenUrlResolver>()); ;    
+                .ForMember(d => d.ImageURL, o=> o.MapFrom<TokenUrlResolver>()); ;    
 
             CreateMap<Store, StoreDto>()
                 .ForMember(d => d.Country, o => o.MapFrom(s => s.Country.Name))
-                .ForMember(d => d.ImageUrl, o => o.MapFrom<StoreUrlResolver>());
+                .ForMember(d => d.ImageURL, o => o.MapFrom<StoreUrlResolver>());
                 
             CreateMap<CustomerBasketDto, CustomerBasket>();
             CreateMap<BasketItemDto, BasketItem>();           
@@ -42,8 +42,8 @@ namespace API.Helpers
             CreateMap<OrderItem, OrderItemDto>()
                 .ForMember(d => d.ProductId, o => o.MapFrom(s => s.ItemOrdered.ProductItemId))
                 .ForMember(d => d.ProductName, o => o.MapFrom(s => s.ItemOrdered.ProductName))
-                .ForMember(d => d.ImageUrl, o => o.MapFrom(s => s.ItemOrdered.ImageUrl))
-                .ForMember(d => d.ImageUrl, o=> o.MapFrom<OrderItemUrlResolver>());            
+                .ForMember(d => d.ImageURL, o => o.MapFrom(s => s.ItemOrdered.ImageURL))
+                .ForMember(d => d.ImageURL, o=> o.MapFrom<OrderItemUrlResolver>());            
                  
         }
     }

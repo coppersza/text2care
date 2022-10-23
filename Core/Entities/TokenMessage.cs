@@ -6,11 +6,16 @@ namespace Core.Entities
 {
     public class TokenMessage : BaseEntity
     {
-        public int Id { get; set; }
+        public int TokenMessageID { get; set; }
         
         [Column(TypeName = "char(38)")]
         [StringLength(38)]
         public string TokenUID { get; set; }
+
+        [Column(TypeName = "char(38)")]
+        [StringLength(38)]
+        public string SMSPortalUID { get; set; }   
+             
         public string MessageText { get; set; }
         public string MessageType { get; set; }
         public string EmailAddress { get; set; }

@@ -47,67 +47,74 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("char(38)");
 
                     b.Property<string>("Address")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Address2")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("City")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<string>("DefaultToken")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("EmailAddress")
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("EmployeeUID")
                         .HasMaxLength(38)
                         .HasColumnType("char(38)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("text");
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
-                    b.Property<decimal>("Latitude")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<string>("ImageURL")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
-                    b.Property<decimal>("Longitude")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<float>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<float>("Longitude")
+                        .HasColumnType("float");
 
                     b.Property<string>("MobileNumber")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Nickname")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("PortalPassword")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("PortalUser")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("PostalCode")
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("Suburb")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Surname")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("DonatorUID");
 
@@ -123,63 +130,70 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("char(38)");
 
                     b.Property<string>("Address")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Address2")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("City")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<string>("DefaultToken")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("EmailAddress")
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("text");
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
-                    b.Property<decimal>("Latitude")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<string>("ImageURL")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
-                    b.Property<decimal>("Longitude")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<float>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<float>("Longitude")
+                        .HasColumnType("float");
 
                     b.Property<string>("MobileNumber")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Nickname")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("PortalPassword")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("PortalUser")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("PostalCode")
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("Suburb")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Surname")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("EmployeeUID");
 
@@ -275,7 +289,7 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("ImageURL")
                         .HasColumnType("text");
 
                     b.Property<bool>("IsActive")
@@ -329,67 +343,77 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("char(38)");
 
                     b.Property<string>("Address")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Address2")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("City")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<string>("DefaultToken")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("EmailAddress")
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("EmployeeUID")
                         .HasMaxLength(38)
                         .HasColumnType("char(38)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("text");
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
-                    b.Property<decimal>("Latitude")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<string>("ImageURL")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
-                    b.Property<decimal>("Longitude")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<float>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<float>("Longitude")
+                        .HasColumnType("float");
 
                     b.Property<string>("MobileNumber")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("Nickname")
                         .HasColumnType("text");
 
                     b.Property<string>("PortalPassword")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("PortalUser")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("PostalCode")
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("Suburb")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Surname")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("RecipientUID");
 
@@ -405,55 +429,65 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("char(38)");
 
                     b.Property<string>("Address")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Address2")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("City")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<string>("DefaultToken")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("EmailAddress")
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("FullName")
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("text");
+                    b.Property<string>("ImageURL")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
-                    b.Property<decimal>("Latitude")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<float>("Latitude")
+                        .HasColumnType("float");
 
-                    b.Property<decimal>("Longitude")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<float>("Longitude")
+                        .HasColumnType("float");
 
                     b.Property<string>("MobileNumber")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("Nickname")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("PortalPassword")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("PortalUser")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("PostalCode")
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("StoreName")
                         .IsRequired()
@@ -461,10 +495,12 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Suburb")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Surname")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("StoreUID");
 
@@ -509,8 +545,8 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(38)
                         .HasColumnType("char(38)");
 
-                    b.Property<decimal>("CostPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("CostPrice")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("DateAssigned")
                         .HasColumnType("datetime");
@@ -530,34 +566,42 @@ namespace Infrastructure.Data.Migrations
                     b.Property<DateTime>("DateStoreAssigned")
                         .HasColumnType("datetime");
 
+                    b.Property<string>("Description")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
                     b.Property<string>("DonatorName")
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("DonatorUID")
                         .HasMaxLength(38)
                         .HasColumnType("char(38)");
 
-                    b.Property<bool>("FoodCollected")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<ulong>("FoodCollected")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("text");
+                    b.Property<string>("ImageURL")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("RecipientName")
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("RecipientUID")
                         .HasMaxLength(38)
                         .HasColumnType("char(38)");
 
-                    b.Property<decimal>("SalesPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("SalesPrice")
+                        .HasColumnType("float");
 
-                    b.Property<string>("ShortUrl")
-                        .HasColumnType("text");
+                    b.Property<string>("ShortURL")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("StoreMealUID")
                         .HasMaxLength(38)
@@ -572,8 +616,8 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("varchar(25)");
 
-                    b.Property<bool>("Valid")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<ulong>("Valid")
+                        .HasColumnType("bit");
 
                     b.HasKey("TokenUID");
 
@@ -590,7 +634,7 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.TokenMessage", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TokenMessageID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -598,25 +642,34 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("EmailAddress")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("EmailText")
-                        .HasColumnType("text");
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
-                    b.Property<bool>("IsSent")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<ulong>("IsSent")
+                        .HasColumnType("bit");
 
                     b.Property<string>("MessageText")
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("MessageType")
-                        .HasColumnType("text");
+                        .HasMaxLength(45)
+                        .HasColumnType("varchar(45)");
 
-                    b.Property<string>("TokenUID")
+                    b.Property<string>("SMSPortalUID")
                         .HasMaxLength(38)
                         .HasColumnType("char(38)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("TokenUID")
+                        .IsRequired()
+                        .HasMaxLength(38)
+                        .HasColumnType("char(38)");
+
+                    b.HasKey("TokenMessageID");
 
                     b.ToTable("TokenMessage");
                 });
@@ -745,7 +798,7 @@ namespace Infrastructure.Data.Migrations
                             b1.Property<int>("OrderItemId")
                                 .HasColumnType("int");
 
-                            b1.Property<string>("ImageUrl")
+                            b1.Property<string>("ImageURL")
                                 .HasColumnType("text");
 
                             b1.Property<int>("ProductItemId")
