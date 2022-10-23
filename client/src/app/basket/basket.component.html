@@ -24,10 +24,11 @@
                           [subtotal]="(basketTotals$ | async).subtotal"
                           [total]="(basketTotals$ | async).total">
                       </app-order-totals>
-                      <a routerLink="/checkout" class="btn btn-primary py-2 btn-block">
+                      <div class="row">
+                        <a routerLink="/checkout" class="btn btn-primary py-2 btn-block">
                           Proceed to checkout
-                      </a>
-
+                        </a>
+                      </div>
                   </div>
               </div>
           </div>
