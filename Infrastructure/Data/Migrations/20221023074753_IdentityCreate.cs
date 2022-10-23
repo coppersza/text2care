@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using MySql.EntityFrameworkCore.Metadata;
 
 namespace Infrastructure.Data.Migrations
 {
@@ -11,12 +12,12 @@ namespace Infrastructure.Data.Migrations
                 name: "Country",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    PortalUser = table.Column<string>(type: "TEXT", nullable: true),
-                    PortalPassword = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    PortalUser = table.Column<string>(type: "text", nullable: true),
+                    PortalPassword = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -27,12 +28,12 @@ namespace Infrastructure.Data.Migrations
                 name: "DeliveryMethod",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ShortName = table.Column<string>(type: "TEXT", nullable: true),
-                    DeliveryTime = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    Price = table.Column<double>(type: "decimal(18,2)", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    ShortName = table.Column<string>(type: "text", nullable: true),
+                    DeliveryTime = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,10 +44,10 @@ namespace Infrastructure.Data.Migrations
                 name: "ProductType",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,15 +58,15 @@ namespace Infrastructure.Data.Migrations
                 name: "TokenMessage",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     TokenUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
-                    MessageText = table.Column<string>(type: "TEXT", nullable: true),
-                    MessageType = table.Column<string>(type: "TEXT", nullable: true),
-                    EmailAddress = table.Column<string>(type: "TEXT", nullable: true),
-                    EmailText = table.Column<string>(type: "TEXT", nullable: true),
-                    DateSent = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    IsSent = table.Column<bool>(type: "INTEGER", nullable: false)
+                    MessageText = table.Column<string>(type: "text", nullable: true),
+                    MessageType = table.Column<string>(type: "text", nullable: true),
+                    EmailAddress = table.Column<string>(type: "text", nullable: true),
+                    EmailText = table.Column<string>(type: "text", nullable: true),
+                    DateSent = table.Column<DateTime>(type: "datetime", nullable: false),
+                    IsSent = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -77,25 +78,25 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     DonatorUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    Surname = table.Column<string>(type: "TEXT", nullable: true),
-                    FullName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Nickname = table.Column<string>(type: "TEXT", nullable: true),
-                    MobileNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    EmailAddress = table.Column<string>(type: "TEXT", nullable: true),
-                    Address = table.Column<string>(type: "TEXT", nullable: true),
-                    Address2 = table.Column<string>(type: "TEXT", nullable: true),
-                    Suburb = table.Column<string>(type: "TEXT", nullable: true),
-                    City = table.Column<string>(type: "TEXT", nullable: true),
-                    PostalCode = table.Column<string>(type: "TEXT", nullable: true),
-                    CountryId = table.Column<int>(type: "INTEGER", nullable: false),
-                    DefaultToken = table.Column<string>(type: "TEXT", nullable: true),
-                    PortalUser = table.Column<string>(type: "TEXT", nullable: true),
-                    PortalPassword = table.Column<string>(type: "TEXT", nullable: true),
-                    Latitude = table.Column<double>(type: "REAL", nullable: false),
-                    Longitude = table.Column<double>(type: "REAL", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    ImageUrl = table.Column<string>(type: "text", nullable: true),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    Surname = table.Column<string>(type: "text", nullable: true),
+                    FullName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Nickname = table.Column<string>(type: "text", nullable: true),
+                    MobileNumber = table.Column<string>(type: "text", nullable: true),
+                    EmailAddress = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    Address2 = table.Column<string>(type: "text", nullable: true),
+                    Suburb = table.Column<string>(type: "text", nullable: true),
+                    City = table.Column<string>(type: "text", nullable: true),
+                    PostalCode = table.Column<string>(type: "text", nullable: true),
+                    CountryId = table.Column<int>(type: "int", nullable: false),
+                    DefaultToken = table.Column<string>(type: "text", nullable: true),
+                    PortalUser = table.Column<string>(type: "text", nullable: true),
+                    PortalPassword = table.Column<string>(type: "text", nullable: true),
+                    Latitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Longitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     EmployeeUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true)
                 },
                 constraints: table =>
@@ -114,25 +115,25 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     EmployeeUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    Surname = table.Column<string>(type: "TEXT", nullable: true),
-                    FullName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Nickname = table.Column<string>(type: "TEXT", nullable: true),
-                    MobileNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    EmailAddress = table.Column<string>(type: "TEXT", nullable: true),
-                    Address = table.Column<string>(type: "TEXT", nullable: true),
-                    Address2 = table.Column<string>(type: "TEXT", nullable: true),
-                    Suburb = table.Column<string>(type: "TEXT", nullable: true),
-                    City = table.Column<string>(type: "TEXT", nullable: true),
-                    PostalCode = table.Column<string>(type: "TEXT", nullable: true),
-                    CountryId = table.Column<int>(type: "INTEGER", nullable: false),
-                    DefaultToken = table.Column<string>(type: "TEXT", nullable: true),
-                    PortalUser = table.Column<string>(type: "TEXT", nullable: true),
-                    PortalPassword = table.Column<string>(type: "TEXT", nullable: true),
-                    Latitude = table.Column<double>(type: "REAL", nullable: false),
-                    Longitude = table.Column<double>(type: "REAL", nullable: false)
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    ImageUrl = table.Column<string>(type: "text", nullable: true),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    Surname = table.Column<string>(type: "text", nullable: true),
+                    FullName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Nickname = table.Column<string>(type: "text", nullable: true),
+                    MobileNumber = table.Column<string>(type: "text", nullable: true),
+                    EmailAddress = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    Address2 = table.Column<string>(type: "text", nullable: true),
+                    Suburb = table.Column<string>(type: "text", nullable: true),
+                    City = table.Column<string>(type: "text", nullable: true),
+                    PostalCode = table.Column<string>(type: "text", nullable: true),
+                    CountryId = table.Column<int>(type: "int", nullable: false),
+                    DefaultToken = table.Column<string>(type: "text", nullable: true),
+                    PortalUser = table.Column<string>(type: "text", nullable: true),
+                    PortalPassword = table.Column<string>(type: "text", nullable: true),
+                    Latitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Longitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -150,25 +151,25 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     RecipientUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    Surname = table.Column<string>(type: "TEXT", nullable: true),
-                    FullName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Nickname = table.Column<string>(type: "TEXT", nullable: true),
-                    MobileNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    EmailAddress = table.Column<string>(type: "TEXT", nullable: true),
-                    Address = table.Column<string>(type: "TEXT", nullable: true),
-                    Address2 = table.Column<string>(type: "TEXT", nullable: true),
-                    Suburb = table.Column<string>(type: "TEXT", nullable: true),
-                    City = table.Column<string>(type: "TEXT", nullable: true),
-                    PostalCode = table.Column<string>(type: "TEXT", nullable: true),
-                    CountryId = table.Column<int>(type: "INTEGER", nullable: false),
-                    DefaultToken = table.Column<string>(type: "TEXT", nullable: true),
-                    PortalUser = table.Column<string>(type: "TEXT", nullable: true),
-                    PortalPassword = table.Column<string>(type: "TEXT", nullable: true),
-                    Latitude = table.Column<double>(type: "REAL", nullable: false),
-                    Longitude = table.Column<double>(type: "REAL", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    ImageUrl = table.Column<string>(type: "text", nullable: true),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    Surname = table.Column<string>(type: "text", nullable: true),
+                    FullName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Nickname = table.Column<string>(type: "text", nullable: true),
+                    MobileNumber = table.Column<string>(type: "text", nullable: true),
+                    EmailAddress = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    Address2 = table.Column<string>(type: "text", nullable: true),
+                    Suburb = table.Column<string>(type: "text", nullable: true),
+                    City = table.Column<string>(type: "text", nullable: true),
+                    PostalCode = table.Column<string>(type: "text", nullable: true),
+                    CountryId = table.Column<int>(type: "int", nullable: false),
+                    DefaultToken = table.Column<string>(type: "text", nullable: true),
+                    PortalUser = table.Column<string>(type: "text", nullable: true),
+                    PortalPassword = table.Column<string>(type: "text", nullable: true),
+                    Latitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Longitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     EmployeeUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true)
                 },
                 constraints: table =>
@@ -187,26 +188,26 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     StoreUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: false),
-                    StoreName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    Surname = table.Column<string>(type: "TEXT", nullable: true),
-                    FullName = table.Column<string>(type: "TEXT", nullable: true),
-                    Nickname = table.Column<string>(type: "TEXT", nullable: true),
-                    MobileNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    EmailAddress = table.Column<string>(type: "TEXT", nullable: true),
-                    Address = table.Column<string>(type: "TEXT", nullable: true),
-                    Address2 = table.Column<string>(type: "TEXT", nullable: true),
-                    Suburb = table.Column<string>(type: "TEXT", nullable: true),
-                    City = table.Column<string>(type: "TEXT", nullable: true),
-                    PostalCode = table.Column<string>(type: "TEXT", nullable: true),
-                    CountryId = table.Column<int>(type: "INTEGER", nullable: false),
-                    DefaultToken = table.Column<string>(type: "TEXT", nullable: true),
-                    PortalUser = table.Column<string>(type: "TEXT", nullable: true),
-                    PortalPassword = table.Column<string>(type: "TEXT", nullable: true),
-                    Latitude = table.Column<double>(type: "REAL", nullable: false),
-                    Longitude = table.Column<double>(type: "REAL", nullable: false)
+                    StoreName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    ImageUrl = table.Column<string>(type: "text", nullable: true),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    Surname = table.Column<string>(type: "text", nullable: true),
+                    FullName = table.Column<string>(type: "text", nullable: true),
+                    Nickname = table.Column<string>(type: "text", nullable: true),
+                    MobileNumber = table.Column<string>(type: "text", nullable: true),
+                    EmailAddress = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    Address2 = table.Column<string>(type: "text", nullable: true),
+                    Suburb = table.Column<string>(type: "text", nullable: true),
+                    City = table.Column<string>(type: "text", nullable: true),
+                    PostalCode = table.Column<string>(type: "text", nullable: true),
+                    CountryId = table.Column<int>(type: "int", nullable: false),
+                    DefaultToken = table.Column<string>(type: "text", nullable: true),
+                    PortalUser = table.Column<string>(type: "text", nullable: true),
+                    PortalPassword = table.Column<string>(type: "text", nullable: true),
+                    Latitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Longitude = table.Column<decimal>(type: "decimal(18, 2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -223,14 +224,14 @@ namespace Infrastructure.Data.Migrations
                 name: "Order",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    BuyerEmail = table.Column<string>(type: "TEXT", nullable: true),
-                    OrderDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DeliveryMethodId = table.Column<int>(type: "INTEGER", nullable: true),
-                    Subtotal = table.Column<double>(type: "REAL", nullable: false),
-                    Status = table.Column<string>(type: "TEXT", nullable: false),
-                    PaymentIntentId = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    BuyerEmail = table.Column<string>(type: "text", nullable: true),
+                    OrderDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DeliveryMethodId = table.Column<int>(type: "int", nullable: true),
+                    Subtotal = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Status = table.Column<string>(type: "text", nullable: false),
+                    PaymentIntentId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -247,15 +248,15 @@ namespace Infrastructure.Data.Migrations
                 name: "Product",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: false),
-                    Price = table.Column<double>(type: "decimal(18,2)", nullable: false),
-                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    ProductTypeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "text", nullable: true),
+                    ProductTypeId = table.Column<int>(type: "int", nullable: false),
                     StoreUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false)
+                    IsActive = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -282,7 +283,7 @@ namespace Infrastructure.Data.Migrations
                     StoreUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
                     RecipientUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
                     EmployeeUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
-                    DateRegistered = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    DateRegistered = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -305,13 +306,13 @@ namespace Infrastructure.Data.Migrations
                 name: "Address",
                 columns: table => new
                 {
-                    OrderId = table.Column<int>(type: "INTEGER", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    LastName = table.Column<string>(type: "TEXT", nullable: true),
-                    Street = table.Column<string>(type: "TEXT", nullable: true),
-                    City = table.Column<string>(type: "TEXT", nullable: true),
-                    State = table.Column<string>(type: "TEXT", nullable: true),
-                    ZipCode = table.Column<string>(type: "TEXT", nullable: true)
+                    OrderId = table.Column<int>(type: "int", nullable: false),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    LastName = table.Column<string>(type: "text", nullable: true),
+                    Street = table.Column<string>(type: "text", nullable: true),
+                    City = table.Column<string>(type: "text", nullable: true),
+                    State = table.Column<string>(type: "text", nullable: true),
+                    ZipCode = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -328,11 +329,11 @@ namespace Infrastructure.Data.Migrations
                 name: "OrderItem",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Price = table.Column<double>(type: "decimal(18,2)", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
-                    OrderId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    OrderId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -350,26 +351,26 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     TokenUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: false),
-                    TokenName = table.Column<string>(type: "TEXT", maxLength: 25, nullable: false),
+                    TokenName = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: false),
                     DonatorUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
                     StoreUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
                     StoreMealUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
                     RecipientUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
-                    CostPrice = table.Column<double>(type: "decimal(18,2)", nullable: false),
-                    SalesPrice = table.Column<double>(type: "decimal(18,2)", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DateStoreAssigned = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DateAssigned = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DateCollected = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DateRelease = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DateExpire = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    FoodCollected = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Valid = table.Column<bool>(type: "INTEGER", nullable: false),
-                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    ShortUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    RecipientName = table.Column<string>(type: "TEXT", nullable: true),
-                    DonatorName = table.Column<string>(type: "TEXT", nullable: true)
+                    CostPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SalesPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DateStoreAssigned = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DateAssigned = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DateCollected = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DateRelease = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DateExpire = table.Column<DateTime>(type: "datetime", nullable: false),
+                    FoodCollected = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Valid = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "text", nullable: true),
+                    ShortUrl = table.Column<string>(type: "text", nullable: true),
+                    RecipientName = table.Column<string>(type: "text", nullable: true),
+                    DonatorName = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -404,17 +405,17 @@ namespace Infrastructure.Data.Migrations
                 name: "Transaction",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     DonatorUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
                     StoreUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
                     EmployeeUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true),
-                    CostPrice = table.Column<double>(type: "decimal(18,2)", nullable: false),
-                    DatePurchased = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    MealsPerWeek = table.Column<int>(type: "INTEGER", nullable: false),
-                    MealsPerMonth = table.Column<int>(type: "INTEGER", nullable: false),
-                    Recurring = table.Column<bool>(type: "INTEGER", nullable: false)
+                    CostPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DatePurchased = table.Column<DateTime>(type: "datetime", nullable: false),
+                    MealsPerWeek = table.Column<int>(type: "int", nullable: false),
+                    MealsPerMonth = table.Column<int>(type: "int", nullable: false),
+                    Recurring = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -443,10 +444,10 @@ namespace Infrastructure.Data.Migrations
                 name: "ProductItemOrdered",
                 columns: table => new
                 {
-                    OrderItemId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProductItemId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProductName = table.Column<string>(type: "TEXT", nullable: true),
-                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true)
+                    OrderItemId = table.Column<int>(type: "int", nullable: false),
+                    ProductItemId = table.Column<int>(type: "int", nullable: false),
+                    ProductName = table.Column<string>(type: "text", nullable: true),
+                    ImageUrl = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

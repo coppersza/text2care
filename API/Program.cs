@@ -26,7 +26,7 @@ namespace API
 
                     var identityContext = services.GetRequiredService<AppIdentityDbContext>();
                     await identityContext.Database.MigrateAsync();
-                    await AppIdentityDbContextSeed.SeedUsersAsync(userManager, roleManager);
+                    // await AppIdentityDbContextSeed.SeedUsersAsync(userManager, roleManager);
 
 
                 }catch(Exception ex)

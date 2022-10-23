@@ -24,10 +24,16 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles));
 
             services.AddControllers();
+
+            // services.AddDbContext<StoreContext>(x => 
+            //     x.UseSqlite(_configuration.GetConnectionString("DefaultSQLiteConnection")));
+            // services.AddDbContext<AppIdentityDbContext>(x => 
+            //     x.UseSqlite(_configuration.GetConnectionString("DefaultSQLiteConnection")));
+            
             services.AddDbContext<StoreContext>(x => 
-                x.UseSqlite(_configuration.GetConnectionString("DefaultSQLiteConnection")));
+                x.UseMySQL(_configuration.GetConnectionString("MySQLDefaultConnection")));
             services.AddDbContext<AppIdentityDbContext>(x => 
-                x.UseSqlite(_configuration.GetConnectionString("DefaultSQLiteConnection")));                
+                x.UseMySQL(_configuration.GetConnectionString("MySQLDefaultConnection")));                
             
             services.AddSingleton<IConnectionMultiplexer, ConnectionMultiplexer>(c => {
                 var configuration = ConfigurationOptions.Parse(_configuration.GetConnectionString("RedisLocal"), true);

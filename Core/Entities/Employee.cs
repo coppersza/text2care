@@ -9,8 +9,6 @@ namespace Core.Entities
         [Column(TypeName = "char(38)")]
         [StringLength(38)]
         public string EmployeeUID { get; set; }    
-        public string Description { get; set; } 
-        public string ImageUrl { get; set; }        
         public string FirstName { get; set; }
         public string Surname { get; set; }
         public string FullName { get; set; }
@@ -25,6 +23,8 @@ namespace Core.Entities
         public int CountryId { get; set; }
         public Country Country{ get; set; }
         public string DefaultToken { get; set; }
+        public string Description { get; set; } 
+        public string ImageUrl { get; set; }               
         public string PortalUser { get; set; }
         public string PortalPassword { get; set; }
         public decimal Latitude { get; set; }

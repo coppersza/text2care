@@ -19,6 +19,7 @@ namespace Infrastructure.Data
         public DbSet<Country> Countries { get; set; }
         public DbSet<Donator> Donators { get; set; }
         public DbSet<Recipient> Recipients { get; set; }
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<StoreRecipient> StoreRecipients { get; set; }
         public DbSet<Token> Tokens { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
