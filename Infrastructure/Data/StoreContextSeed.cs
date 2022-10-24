@@ -14,8 +14,8 @@ namespace Infrastructure.Data
             var tempToken = "";
             try
             {                
-                //var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                var path = "../Infrastructure";
+                var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                // var path = "../Infrastructure";
 
                 if (!context.Countries.Any()){
                     var typesData = File.ReadAllText(path + @"/Data/SeedData/InsertCountryFull.json");
