@@ -5,6 +5,24 @@ namespace Core.Entities
 
     public class Donator : BaseEntity
     {
+        public Donator()
+        {
+        }
+        public Donator(string donatorUID, 
+            string emailAddress,
+            string fullName, 
+            string mobileNumber,            
+            int countryId)
+        {
+            DonatorUID = donatorUID;
+            FullName = fullName;
+            MobileNumber = mobileNumber;
+            EmailAddress = emailAddress;
+            CountryId = countryId;
+            EmployeeUID = "00000000-0000-0000-0000-000000000000";
+
+        }
+
         [Key]
         [Column(TypeName = "char(38)")]
         [StringLength(38)]

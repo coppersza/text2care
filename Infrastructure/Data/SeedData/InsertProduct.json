@@ -24,7 +24,7 @@
 		"Name" : "Pet Food",
 		"Description" : "Random Pet Food",
 		"Price" : 3.02,
-		"ImageURL" : "images/products/gloria.jpg",
+		"ImageURL" : "images/products/pet.png",
 		"ProductTypeId" : 3,
 		"StoreUID" : "00000000-0000-0000-0000-000000000000",
 		"IsActive" : true

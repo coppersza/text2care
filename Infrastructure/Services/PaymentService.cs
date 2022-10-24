@@ -107,6 +107,7 @@ namespace Infrastructure.Services
                 var productId = item.ItemOrdered.ProductItemId;
                 var quantity = item.Quantity;
                 var tokenUID = Guid.Empty.ToString();
+                
                 while (quantity > 0)
                 {
                     var tokenName = DateTime.Now.Date.ToShortDateString() + ":" + quantity.ToString();

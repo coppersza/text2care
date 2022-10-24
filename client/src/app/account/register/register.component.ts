@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
         [Validators.required, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')],
         [this.validateEmailNotTaken()]
       ],
+      mobileNumber: [null],
       password: [null, [Validators.required]]
     });
   }

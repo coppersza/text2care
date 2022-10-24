@@ -17,6 +17,7 @@ namespace API.Extensions
             services.AddScoped<IUnitOfWork, UnitOfWork>(); 
             services.AddScoped<IPaymentService, PaymentService>();
             services.AddScoped<ITokenService, TokenService>();   
+            services.AddScoped<IDonatorService, DonatorService>();   
             
             services.AddSingleton<IResponseCacheService, ResponseCacheService>();
 

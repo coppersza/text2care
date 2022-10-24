@@ -19,7 +19,7 @@ namespace API.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IUserTokenService _userTokenService;
-
+        private readonly IDonatorService _donatorService;
         private readonly IMapper _mapper;
 
         public AccountController(
@@ -28,12 +28,14 @@ namespace API.Controllers
             SignInManager<AppUser> signInManager, 
 
             IUserTokenService userTokenService, 
+            IDonatorService donatorService,
             IMapper mapper)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
             _userTokenService = userTokenService;
+            _donatorService = donatorService;
             _mapper = mapper;
         }
         [Authorize]
@@ -88,8 +90,9 @@ namespace API.Controllers
             return new UserDto{
                 Id = user.Id,
                 Email = user.Email,
-                Token = _userTokenService.CreateUserToken(user),
-                DisplayName = user.DisplayName
+                MobileNumber = user.PhoneNumber,
+                DisplayName = user.DisplayName,
+                Token = _userTokenService.CreateUserToken(user)                
             };
         }
 
@@ -100,19 +103,24 @@ namespace API.Controllers
             {
                 return new BadRequestObjectResult(new ApiValidationErrorResponse{Errors = new []{"Email address is in use"}});
             }
-            var user = new AppUser{
-                DisplayName = registerDto.DisplayName,
+            var user = new AppUser{                
                 Email = registerDto.Email,
+                PhoneNumber = registerDto.MobileNumber,
+                DisplayName = registerDto.DisplayName,
                 UserName = registerDto.Email
             };
             var result = await _userManager.CreateAsync(user, registerDto.Password);
             if (!result.Succeeded) return BadRequest(new ApiResponse(400));
 
+            var donator = await _donatorService.CreateOrUpdateDonatorAsync(user.Email, user.PhoneNumber, user.DisplayName);
+            if (donator == null) return BadRequest(new ApiResponse(400));
+
             return new UserDto{
                 Id = user.Id,
-                DisplayName = user.DisplayName,
-                Token = _userTokenService.CreateUserToken(user),
-                Email = user.Email
+                Email = user.Email,
+                MobileNumber = user.PhoneNumber,
+                DisplayName = user.DisplayName,                
+                Token = _userTokenService.CreateUserToken(user)                
             };
 
         }

@@ -21,8 +21,21 @@ namespace Core.Entities
             ProductId = product.Id;
             StoreUID = product.StoreUID;            
             RecipientUID = "00000000-0000-0000-0000-000000000000";
+            StoreMealUID = "00000000-0000-0000-0000-000000000000";
+            DateTime nullDate = new DateTime(1899, 12, 30, 0, 0, 0);
+
+            DateCreated = DateTime.UtcNow;
+            DateStoreAssigned = nullDate;
+            DateAssigned = nullDate;
+            DateCollected = nullDate;
+
+            if (StoreUID != "00000000-0000-0000-0000-000000000000")
+                DateStoreAssigned = DateTime.UtcNow;
+            DateRelease = DateTime.UtcNow;
+            DateExpire = DateTime.UtcNow.AddDays(90);
+
             DonatorUID = donatorUID;
-            CostPrice = ((float)product.Price);
+            CostPrice = (float)product.Price;
             SalesPrice = 0;
             ImageURL = "images/tokens/hourglass.png";
         }
@@ -57,11 +70,11 @@ namespace Core.Entities
         public float SalesPrice { get; set; }
 
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
-        public DateTime DateStoreAssigned { get; set; } = DateTime.MinValue;
-        public DateTime DateAssigned { get; set; } = DateTime.MinValue;
-        public DateTime DateCollected { get; set; } = DateTime.MinValue;
+        public DateTime DateStoreAssigned { get; set; }
+        public DateTime DateAssigned { get; set; }
+        public DateTime DateCollected { get; set; }
         public DateTime DateRelease { get; set; } = DateTime.UtcNow;
-        public DateTime DateExpire { get; set; } = DateTime.UtcNow.AddDays(60) ;
+        public DateTime DateExpire { get; set; } = DateTime.UtcNow.AddDays(90) ;
         public bool FoodCollected { get; set; } = false;
         public bool Valid { get; set; } = true;
         public string ImageURL { get; set; }

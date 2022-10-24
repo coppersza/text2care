@@ -8,11 +8,11 @@ namespace Core.Entities.OrderAggregate
         {
         }
 
-        public ProductItemOrdered(int productItemId, string productName, string imageUrl)
+        public ProductItemOrdered(int productItemId, string productName, string imageURL)
         {
             ProductItemId = productItemId;
             ProductName = productName;
-            ImageURL = imageUrl;
+            ImageURL = imageURL;
         }
 
         public int ProductItemId { get; set; }

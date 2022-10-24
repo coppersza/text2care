@@ -21,11 +21,24 @@ namespace Infrastructure.Services
         public async Task<Token> CreateOrUpdateTokenAsync(string tokenUID, string tokenName, int productId, string buyerEmail)
         {            
             var product = await _unitOfWork.Repository<Product>().GetByIdAsync(productId);
-            var token = await _unitOfWork.Repository<Token>().GetByIdAsync(tokenUID);
-            
+            var token = await _unitOfWork.Repository<Token>().GetByIdAsync(tokenUID);            
+
             var spec = new DonatorSpecEmail(buyerEmail);
             var donator = await _unitOfWork.Repository<Donator>().GetEntityWithSpec(spec);
+
             var donatorUID = Guid.Empty.ToString().ToUpper();
+            if (donator == null)
+            {
+                //Need to add a donator if it doesnt already exist.
+                donatorUID = Guid.NewGuid().ToString().ToUpper(); 
+                var emailAddress = buyerEmail;
+                var fullName = "";
+                var mobileNumber = "";
+                var countryId = 1;
+                donator = new Donator(donatorUID, emailAddress, fullName, mobileNumber, countryId);
+                _unitOfWork.Repository<Donator>().Add(donator);
+            }            
+            
             if (donator != null)
                 donatorUID = donator.DonatorUID;
 

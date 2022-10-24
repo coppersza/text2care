@@ -2,7 +2,7 @@ export interface IStore {
   storeUID: string;
   storeName: string;
   description: string;
-  imageUrl: string;
+  imageURL: string;
   country: string;
   fullName: string;
 }

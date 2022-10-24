@@ -3,7 +3,7 @@ export interface IProduct {
   name: string;
   description: string;
   price: number;
-  imageUrl: string;
+  imageURL: string;
   productType: string;
   storeName: string;
   isActive: boolean;
