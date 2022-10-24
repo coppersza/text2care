@@ -24,16 +24,21 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("PortalPassword")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.Property<string>("PortalUser")
-                        .HasColumnType("text");
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)");
 
                     b.HasKey("Id");
 

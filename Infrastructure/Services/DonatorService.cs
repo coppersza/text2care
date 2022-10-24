@@ -22,7 +22,8 @@ namespace Infrastructure.Services
                     mobileNumber = mobileNumber.Remove(pos, 1);
                 var specMobile = new DonatorSpecMobileNumber(mobileNumber);
                 donator = await _unitOfWork.Repository<Donator>().GetEntityWithSpec(specMobile); 
-                if (donator.EmailAddress != buyerEmail)
+
+                if (donator != null && donator.EmailAddress != buyerEmail)
                 {
                     donator.EmailAddress = buyerEmail;
                     _unitOfWork.Repository<Donator>().Update(donator);
@@ -36,9 +37,9 @@ namespace Infrastructure.Services
                 var countryId = 1;
                 donator = new Donator(donatorUID, buyerEmail, fullName, mobileNumber, countryId);
                 _unitOfWork.Repository<Donator>().Add(donator);
-            }      
-            var result = await _unitOfWork.Complete();
-            if (result <= 0) return null;                  
+                var result = await _unitOfWork.Complete();
+                if (result <= 0) return null;                   
+            }               
             return donator;
         }
 

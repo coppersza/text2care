@@ -113,7 +113,7 @@ namespace API.Controllers
             if (!result.Succeeded) return BadRequest(new ApiResponse(400));
 
             var donator = await _donatorService.CreateOrUpdateDonatorAsync(user.Email, user.PhoneNumber, user.DisplayName);
-            if (donator == null) return BadRequest(new ApiResponse(400));
+            // if (donator == null) return BadRequest(new ApiResponse(400));
 
             return new UserDto{
                 Id = user.Id,
