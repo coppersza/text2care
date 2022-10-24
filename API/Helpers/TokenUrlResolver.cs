@@ -21,6 +21,8 @@ namespace API.Helpers
             {
                 return _config["ApiUrl"] + source.ImageURL;
             }
+            if (string.IsNullOrEmpty(source.ImageURL))
+                return _config["ApiUrl"] + "images/tokens/hourglass.png";
             return source.ImageURL;
         }
     }
