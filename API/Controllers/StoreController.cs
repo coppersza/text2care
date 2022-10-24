@@ -21,7 +21,7 @@ namespace API.Controllers
             _storeRepo = storeRepo;
             _mapper = mapper;
         }
-        [Cached(600)]
+        // [Cached(600)]
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<StoreDto>>> GetStores()        
         {
@@ -30,7 +30,7 @@ namespace API.Controllers
             var dataMap = _mapper.Map<IReadOnlyList<Store>, IReadOnlyList<StoreDto>>(data);
             return Ok(dataMap);
         }
-        [Cached(600)]
+        // [Cached(600)]
         [HttpGet("{id}")]
         public async Task<ActionResult<StoreDto>> GetStore(string id)        
         {

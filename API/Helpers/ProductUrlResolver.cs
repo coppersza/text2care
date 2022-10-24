@@ -17,11 +17,11 @@ namespace API.Helpers
 
         public string Resolve(Product source, ProductDto destination, string destMember, ResolutionContext context)
         {
-            if (!string.IsNullOrEmpty(source.ImageURL))
+            if (!string.IsNullOrEmpty(source.ImageURL) && source.ImageURL.StartsWith("images"))
             {
                 return _config["ApiUrl"] + source.ImageURL;
             }
-            return null;
+            return source.ImageURL;
         }
     }
 

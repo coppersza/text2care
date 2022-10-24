@@ -15,6 +15,19 @@ namespace Infrastructure.Services
         {
             var spec = new DonatorSpecEmail(buyerEmail);
             var donator = await _unitOfWork.Repository<Donator>().GetEntityWithSpec(spec);
+            if (donator == null)
+            {
+                int pos = mobileNumber.IndexOf('+');
+                if (pos >= 0)
+                    mobileNumber = mobileNumber.Remove(pos, 1);
+                var specMobile = new DonatorSpecMobileNumber(mobileNumber);
+                donator = await _unitOfWork.Repository<Donator>().GetEntityWithSpec(specMobile); 
+                if (donator.EmailAddress != buyerEmail)
+                {
+                    donator.EmailAddress = buyerEmail;
+                    _unitOfWork.Repository<Donator>().Update(donator);
+                }
+            }
 
             if (donator == null)
             {

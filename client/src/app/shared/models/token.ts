@@ -17,6 +17,7 @@ export interface IToken {
   dateExpire: Date;
   foodCollected: boolean;
   valid: boolean;
+  description: string;
   imageURL: string;
   shortURL: string;
 }
