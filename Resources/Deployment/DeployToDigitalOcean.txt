@@ -44,7 +44,7 @@ systemctl status mysql.service
 --sudo mysqladmin -p -u text2care version
 --Test From outside
 --mysql -u text2care -h 167.99.75.24 -p Text2care@13
-
+mysqld --version
 
 4.  Install and configure apache by running the following commands:
 
@@ -188,6 +188,7 @@ sudo apt-get update && \
   
 sudo apt-get update && \
   sudo apt-get install -y aspnetcore-runtime-6.0  
+sudo apt-get remove -y aspnetcore-runtime-5.0
 sudo apt-get remove -y aspnetcore-runtime-6.0
 
 sudo shutdown -r now 'System maintenance'
@@ -198,6 +199,7 @@ systemctl restart systemd-journald
 
 19.  Start the kestrel service by running the following command:
 
+sudo systemctl status text2care-web.service
 sudo systemctl start text2care-web.service
 sudo systemctl stop text2care-web.service
 sudo systemctl restart text2care-web.service
