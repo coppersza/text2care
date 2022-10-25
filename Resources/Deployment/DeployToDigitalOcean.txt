@@ -212,4 +212,31 @@ netstat -ntpl
 
 journalctl -u text2care-web.service --since "5 min ago"
 
-25.  Make sure there are no errors and then test you can browse to the published app on http://167.99.75.24
+22.  Make sure there are no errors and then test you can browse to the published app on http://167.99.75.24
+
+
+23. Secure Site
+https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-20-04
+
+sudo apt install certbot python3-certbot-apache
+
+sudo nano /etc/apache2/sites-available/text2care.conf
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ProxyPreserveHost On
+    ProxyPass / http://127.0.0.1:5000/
+    ProxyPassReverse / http://127.0.0.1:5000
+	ServerName pennydodo.com
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+systemctl reload apache2
+sudo nano /etc/systemd/system/text2care-web.service
+Change to domain name
+
+systemctl daemon-reload
+sudo systemctl restart text2care-web.service
+sudo apache2ctl configtest
+
+sudo certbot --apache

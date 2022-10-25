@@ -110,7 +110,8 @@ namespace Infrastructure.Services
                 
                 while (quantity > 0)
                 {
-                    var tokenName = DateTime.Now.Date.ToShortDateString() + ":" + quantity.ToString();
+                    // var tokenName = DateTime.Now.Date.ToShortDateString() + ":" + quantity.ToString();
+                    var tokenName = DateTime.Now.ToString("yyyyMMddHHmm") + quantity.ToString();
                     await _tokenService.CreateOrUpdateTokenAsync(tokenUID, tokenName, productId, buyerEmail);
                     quantity--;
                 }
