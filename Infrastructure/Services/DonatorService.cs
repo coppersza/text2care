@@ -30,6 +30,7 @@ namespace Infrastructure.Services
                 {
                     donator.EmailAddress = buyerEmail;
                     _unitOfWork.Repository<Donator>().Update(donator);
+                    var result = await _unitOfWork.Complete();
                 }
             }
 
