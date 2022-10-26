@@ -25,7 +25,7 @@ namespace Core.Entities
         [Column(TypeName = "char(38)")]
         [StringLength(38)]
         public string EmployeeUID { get; set; }  
-        public decimal CostPrice { get; set; }      
+        public float CostPrice { get; set; }      
         public DateTime DatePurchased { get; set; } = DateTime.UtcNow;    
         public int MealsPerWeek { get; set; }
         public int MealsPerMonth { get; set; }
