@@ -5,7 +5,6 @@ namespace API.Dtos
     public class DonatorDto
     {
         public string DonatorUID { get; set; }
-        public string Description { get; set; } 
         public string ImageURL { get; set; }        
         public string FirstName { get; set; }
         public string Surname { get; set; }

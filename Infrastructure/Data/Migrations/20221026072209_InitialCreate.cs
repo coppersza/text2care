@@ -262,6 +262,8 @@ namespace Infrastructure.Data.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StoreName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    Description = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     FirstName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Surname = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)

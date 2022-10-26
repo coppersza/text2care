@@ -458,6 +458,10 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("varchar(10)");
 
+                    b.Property<string>("Description")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
                     b.Property<string>("EmailAddress")
                         .HasMaxLength(250)
                         .HasColumnType("varchar(250)");

@@ -13,6 +13,7 @@ namespace Infrastructure.Data.Config
             builder.Property(t => t.TokenName).IsRequired().HasMaxLength(25);
             // builder.Property(t => t.CostPrice).HasColumnType("decimal(18,2)");
             // builder.Property(t => t.SalesPrice).HasColumnType("decimal(18,2)");
+            
             builder.Property(p => p.ImageURL).HasMaxLength(250);
             builder.Property(p => p.ShortURL).HasMaxLength(250);
             builder.Property(p => p.Description).HasMaxLength(250);

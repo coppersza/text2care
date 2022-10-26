@@ -10,6 +10,7 @@ namespace Infrastructure.Data.Config
         {
             builder.Property(p => p.StoreUID).IsRequired();            
             builder.Property(p => p.StoreName).IsRequired().HasMaxLength(100);
+            builder.Property(p => p.Description).HasMaxLength(250);
             builder.Property(p => p.Nickname).HasMaxLength(100);
             builder.Property(p => p.FirstName).HasMaxLength(100);
             builder.Property(p => p.Surname).HasMaxLength(100);
