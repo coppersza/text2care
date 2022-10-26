@@ -533,7 +533,7 @@ namespace Infrastructure.Data.Migrations
                     CountryId = table.Column<int>(type: "int", nullable: false),
                     EmployeeUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CostPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CostPrice = table.Column<float>(type: "float", nullable: false),
                     DatePurchased = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     MealsPerWeek = table.Column<int>(type: "int", nullable: false),
                     MealsPerMonth = table.Column<int>(type: "int", nullable: false),

@@ -9,7 +9,7 @@ namespace Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<Transaction> builder)
         {
-            builder.Property(t => t.CostPrice).HasColumnType("decimal(18,2)");
+            // builder.Property(t => t.CostPrice).HasColumnType("decimal(18,2)");
                
             builder.HasOne(b => b.Product).WithMany()
                 .HasForeignKey(t => t.ProductId);    

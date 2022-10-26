@@ -695,8 +695,8 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<decimal>("CostPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("CostPrice")
+                        .HasColumnType("float");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
