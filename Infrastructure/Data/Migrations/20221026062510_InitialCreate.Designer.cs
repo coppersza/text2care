@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20221025102343_IdentityCreate")]
-    partial class IdentityCreate
+    [Migration("20221026062510_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -689,12 +689,15 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Transaction", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TransactionID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<decimal>("CostPrice")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DatePurchased")
                         .HasColumnType("datetime(6)");
@@ -723,7 +726,9 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(38)
                         .HasColumnType("char(38)");
 
-                    b.HasKey("Id");
+                    b.HasKey("TransactionID");
+
+                    b.HasIndex("CountryId");
 
                     b.HasIndex("DonatorUID");
 
@@ -916,6 +921,12 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Transaction", b =>
                 {
+                    b.HasOne("Core.Entities.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Core.Entities.Donator", "Donator")
                         .WithMany()
                         .HasForeignKey("DonatorUID");
@@ -929,6 +940,8 @@ namespace Infrastructure.Data.Migrations
                     b.HasOne("Core.Entities.Store", "Store")
                         .WithMany()
                         .HasForeignKey("StoreUID");
+
+                    b.Navigation("Country");
 
                     b.Navigation("Donator");
 

@@ -6,7 +6,7 @@ namespace Core.Entities
 {
     public class Transaction : BaseEntity
     {
-        public int Id { get; set; }
+        public int TransactionID { get; set; }
         
         [Column(TypeName = "char(38)")]
         [StringLength(38)]
@@ -18,7 +18,9 @@ namespace Core.Entities
         public string StoreUID { get; set; }
         public Store Store{ get; set; }   
         public int ProductId { get; set; }  
-        public Product Product{ get; set; }             
+        public Product Product{ get; set; }      
+        public int CountryId { get; set; }
+        public Country Country{ get; set; }               
 
         [Column(TypeName = "char(38)")]
         [StringLength(38)]

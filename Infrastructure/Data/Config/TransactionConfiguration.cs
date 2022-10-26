@@ -18,7 +18,9 @@ namespace Infrastructure.Data.Config
                 .HasForeignKey(p => p.DonatorUID);
             builder.HasOne(b => b.Store).WithMany()
                 .HasPrincipalKey(p => p.StoreUID)
-                .HasForeignKey(p => p.StoreUID);                                                                            
+                .HasForeignKey(p => p.StoreUID);       
+            builder.HasOne(b => b.Country).WithMany()
+                .HasForeignKey(p => p.CountryId);                                                                                     
         }
     }    
 }

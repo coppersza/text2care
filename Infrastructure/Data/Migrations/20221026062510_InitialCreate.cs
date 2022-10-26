@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Data.Migrations
 {
-    public partial class IdentityCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -521,13 +521,14 @@ namespace Infrastructure.Data.Migrations
                 name: "Transaction",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    TransactionID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DonatorUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StoreUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ProductId = table.Column<int>(type: "int", nullable: false),
+                    CountryId = table.Column<int>(type: "int", nullable: false),
                     EmployeeUID = table.Column<string>(type: "char(38)", maxLength: 38, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CostPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -538,7 +539,13 @@ namespace Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transaction", x => x.Id);
+                    table.PrimaryKey("PK_Transaction", x => x.TransactionID);
+                    table.ForeignKey(
+                        name: "FK_Transaction_Country_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Country",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Transaction_Donator_DonatorUID",
                         column: x => x.DonatorUID,
@@ -650,6 +657,11 @@ namespace Infrastructure.Data.Migrations
                 name: "IX_Token_StoreUID",
                 table: "Token",
                 column: "StoreUID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transaction_CountryId",
+                table: "Transaction",
+                column: "CountryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Transaction_DonatorUID",
