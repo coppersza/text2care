@@ -29,6 +29,8 @@ namespace API.Controllers
             _tokenService = tokenService;
             _mapper = mapper;
         }
+        
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Token>> CreateUserToken(TokenDto tokenDto)
         {
@@ -50,6 +52,8 @@ namespace API.Controllers
             if (token == null) return BadRequest(new ApiResponse(400, "Problem creating order"));
             return Ok(token);
         }
+
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<TokenDto>>> GetTokensForUser([FromQuery] TokenSpecParams specParams)
         {
@@ -61,8 +65,9 @@ namespace API.Controllers
             // return Ok(dataMap);
 
             return Ok(new Pagination<TokenDto>(specParams.PageIndex, specParams.PageSize, totalItems, dataMap));
-
         }
+
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<TokenDto>> GetTokenByIdForUser(string id)
         {

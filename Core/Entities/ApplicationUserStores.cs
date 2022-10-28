@@ -8,7 +8,7 @@ namespace Core.Entities
         [Key]
         [Column(TypeName = "char(38)")]
         [StringLength(38)]
-        public string ApplicationUserStoreUid { get; set; }     
+        public string ApplicationUserStoreUID { get; set; }     
            
         [Column(TypeName = "char(38)")]
         [StringLength(38)]
@@ -16,7 +16,7 @@ namespace Core.Entities
 
         [Column(TypeName = "char(38)")]
         [StringLength(38)]
-        public string StoreUid { get; set; }   
+        public string StoreUID { get; set; }   
                     
     }
 }

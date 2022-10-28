@@ -43,7 +43,8 @@ sudo apt-get install mysql-server
 
 
 sudo systemctl start mysql.service
-sudo mysql
+systemctl status mysql.service
+mysql -u root -p
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'M@rio13Bros';
 exit
 sudo mysql_secure_installation
@@ -70,16 +71,6 @@ systemctl status mysql.service
 --Test From outside
 --mysql -u text2care -h 167.99.75.24 -p Text2care@13
 mysqld --version
-
-ALTER DATABASE text2careapidb CHARACTER SET utf8 COLLATE utf8_general_ci;
-
-DB="text2careapidb"; ( echo 'ALTER DATABASE '"$DB"' CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;'; mysql -pM@rio13Bros 
-"$DB" -e "SHOW TABLES" --batch --skip-column-names | xargs -I{} echo 'SET foreign_key_checks = 0; ALTER TABLE '{}' CONVERT 
-TO CHARACTER SET utf8 COLLATE utf8_general_ci;' ) | mysql -pM@rio13Bros "$DB"
-echo 'ALTER DATABASE '"$DB"' CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;'; mysql -pM@rio13Bros "$DB" -e "SHOW TABLES" 
---batch --skip-column-names | xargs -I{} echo 'SET foreign_key_checks = 0; ALTER TABLE '{}' CONVERT TO CHARACTER SET utf8 
-COLLATE utf8_general_ci;'
-
 
 4.  Install and configure apache by running the following commands:
 
