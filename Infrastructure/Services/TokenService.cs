@@ -65,16 +65,14 @@ namespace Infrastructure.Services
             return await _unitOfWork.Repository<Token>().ListAsync(spec);
         }
 
-        public async Task<IReadOnlyList<Token>> GetTokensForUserAsync(string buyerEmail, TokenSpecParams specParams)
+        public async Task<IReadOnlyList<Token>> GetTokensForUserAsync(TokenSpecParams specParams)
         {
-            specParams.DonatorEmail = buyerEmail;
             var spec = new TokenSpec(specParams);
             var data = await _unitOfWork.Repository<Token>().ListAsync(spec);
             return data;        
         }
-        public async Task<int> GetTokensForUserCountAsync(string buyerEmail, TokenSpecParams specParams)
+        public async Task<int> GetTokensForUserCountAsync(TokenSpecParams specParams)
         {
-            specParams.DonatorEmail = buyerEmail;
             var countSpec = new TokenSpecCount(specParams);
             var totalItems = await _unitOfWork.Repository<Token>().CountAsync(countSpec);
             return totalItems;        

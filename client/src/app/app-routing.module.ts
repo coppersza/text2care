@@ -5,10 +5,13 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 import { ServerErrorComponent } from './core/server-error/server-error.component';
 import { TestErrorComponent } from './core/test-error/test-error.component';
 import { HomeComponent } from './home/home.component';
+import { ShopComponent } from './shop/shop.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, data:{breadcrumb: 'Home'}},
+  // {path: '', component: HomeComponent, data:{breadcrumb: 'Home'}},
+  // {path: '', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule), data:{breadcrumb: 'Shop'}},
+  {path: '', component: ShopComponent},
   {path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule), data:{breadcrumb: 'Shop'}},
   {path: 'token', canActivate:[AuthGuard], loadChildren: () => import('./token/token.module').then(mod => mod.TokenModule), data:{breadcrumb: 'Token'}},
 

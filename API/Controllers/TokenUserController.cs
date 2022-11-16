@@ -38,10 +38,6 @@ namespace API.Controllers
             var email = user.Email;
             var userName = user.DisplayName;
             var mobileNumber = user.PhoneNumber;
-            // var email = HttpContext.User.RetrieveEmailFromPrincipal();
-            // var user = await _userManager.FindByEmailAsync(loginDto.Email);
-            // var name = HttpContext.User.RetrieveNameFromPrincipal();
-            // var mobileNumber = HttpContext.User.RetrieveMobilePhoneFromPrincipal();
 
             var productId = tokenDto.ProductId;
             var tokenUID = tokenDto.TokenUID;
@@ -58,8 +54,9 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<TokenDto>>> GetTokensForUser([FromQuery] TokenSpecParams specParams)
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
-            var data = await _tokenService.GetTokensForUserAsync(email, specParams);
-            var totalItems = await _tokenService.GetTokensForUserCountAsync(email, specParams);
+            specParams.DonatorEmail = email;
+            var data = await _tokenService.GetTokensForUserAsync(specParams);
+            var totalItems = await _tokenService.GetTokensForUserCountAsync(specParams);
             var dataMap = _mapper.Map<IReadOnlyList<Token>, IReadOnlyList<TokenDto>>(data);
 
             // return Ok(dataMap);
@@ -72,9 +69,9 @@ namespace API.Controllers
         public async Task<ActionResult<TokenDto>> GetTokenByIdForUser(string id)
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
-            var order = await _tokenService.GetTokenByIdAsync(id, email);
-            if (order == null) return NotFound(new ApiResponse(404));
-            return _mapper.Map<Token, TokenDto>(order);
+            var token = await _tokenService.GetTokenByIdAsync(id, email);
+            if (token == null) return NotFound(new ApiResponse(404));
+            return _mapper.Map<Token, TokenDto>(token);
         }
     }
 }
