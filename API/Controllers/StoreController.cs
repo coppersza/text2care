@@ -6,6 +6,8 @@ using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
+using Infrastructure.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -14,12 +16,14 @@ namespace API.Controllers
     {
         private readonly IGenericRepository<Store> _storeRepo;
         private readonly IMapper _mapper;
+        private readonly IStoreService _storeService;
 
         public StoreController(IGenericRepository<Store> storeRepo,
-            IMapper mapper)
+            IMapper mapper, IStoreService storeService)
         {
             _storeRepo = storeRepo;
             _mapper = mapper;
+            _storeService = storeService;
         }
         // [Cached(600)]
         [HttpGet]
@@ -30,6 +34,19 @@ namespace API.Controllers
             var dataMap = _mapper.Map<IReadOnlyList<Store>, IReadOnlyList<StoreDto>>(data);
             return Ok(dataMap);
         }
+
+        [Authorize]
+        [HttpGet("user")]
+        public async Task<ActionResult<IReadOnlyList<StoreDto>>> GetStoresUser()
+        {
+            var email = HttpContext.User.RetrieveEmailFromPrincipal();
+            var store = await _storeService.GetStoreForUserAsync(email);
+            var spec = new StoreSpec(store.StoreUID);
+            var data = await _storeRepo.ListAsync(spec);
+            var dataMap = _mapper.Map<IReadOnlyList<Store>, IReadOnlyList<StoreDto>>(data);
+            return Ok(dataMap);
+        }
+
         // [Cached(600)]
         [HttpGet("{id}")]
         public async Task<ActionResult<StoreDto>> GetStore(string id)        

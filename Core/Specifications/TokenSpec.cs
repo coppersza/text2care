@@ -9,8 +9,7 @@ namespace Core.Specifications
                 (!specParams.ProductTypeId.HasValue || x.Product.ProductTypeId == specParams.ProductTypeId) && 
                 (string.IsNullOrEmpty(specParams.StoreUID) || x.StoreUID == specParams.StoreUID) &&
                 (string.IsNullOrEmpty(specParams.RecipientUID) || x.RecipientUID == specParams.RecipientUID) &&
-                (string.IsNullOrEmpty(specParams.DonatorUID) || x.DonatorUID == specParams.DonatorUID) &&
-                (string.IsNullOrEmpty(specParams.DonatorEmail) || x.Donator.EmailAddress == specParams.DonatorEmail) )
+                (string.IsNullOrEmpty(specParams.DonatorUID) || x.DonatorUID == specParams.DonatorUID) )
         {
             AddInclude(x => x.Product);
             AddInclude(x => x.Store);            

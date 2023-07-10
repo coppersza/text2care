@@ -6,7 +6,8 @@ namespace Core.Interfaces
 {
     public interface IDonatorService
     {
-        Task<Donator> CreateOrUpdateDonatorAsync(string buyerEmail, string mobileNumber, string fullName);
-        Task<IReadOnlyList<Donator>> GetDonatorForUserAsync(string buyerEmail);         
+        Task<Donator> CreateOrUpdateDonatorAsync(string email, string mobileNumber, string fullName);
+        Task<Donator> GetDonatorForUserAsync(string email);
     }
+
 }

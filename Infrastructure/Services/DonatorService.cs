@@ -14,9 +14,9 @@ namespace Infrastructure.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<Donator> CreateOrUpdateDonatorAsync(string buyerEmail, string mobileNumber, string fullName)
+        public async Task<Donator> CreateOrUpdateDonatorAsync(string email, string mobileNumber, string fullName)
         {
-            var spec = new DonatorSpecEmail(buyerEmail);
+            var spec = new DonatorSpecEmail(email);
             var donator = await _unitOfWork.Repository<Donator>().GetEntityWithSpec(spec);
             if (donator == null)
             {
@@ -26,9 +26,9 @@ namespace Infrastructure.Services
                 var specMobile = new DonatorSpecMobileNumber(mobileNumber);
                 donator = await _unitOfWork.Repository<Donator>().GetEntityWithSpec(specMobile); 
 
-                if (donator != null && donator.EmailAddress != buyerEmail)
+                if (donator != null && donator.EmailAddress != email)
                 {
-                    donator.EmailAddress = buyerEmail;
+                    donator.EmailAddress = email;
                     _unitOfWork.Repository<Donator>().Update(donator);
                     var result = await _unitOfWork.Complete();
                 }
@@ -39,7 +39,7 @@ namespace Infrastructure.Services
                 //Need to add a donator if it doesnt already exist.
                 var donatorUID = Guid.NewGuid().ToString().ToUpper();
                 var countryId = 1;
-                donator = new Donator(donatorUID, buyerEmail, fullName, mobileNumber, countryId);
+                donator = new Donator(donatorUID, email, fullName, mobileNumber, countryId);
                 _unitOfWork.Repository<Donator>().Add(donator);
                 var result = await _unitOfWork.Complete();
                 if (result <= 0) return null;                   
@@ -47,9 +47,11 @@ namespace Infrastructure.Services
             return donator;
         }
 
-        public Task<IReadOnlyList<Donator>> GetDonatorForUserAsync(string buyerEmail)
+        public async Task<Donator> GetDonatorForUserAsync(string email)
         {
-            throw new NotImplementedException();
+            var spec = new DonatorSpecEmail(email);
+            var donator = await _unitOfWork.Repository<Donator>().GetEntityWithSpec(spec);
+            return donator;
         }
     }
 }

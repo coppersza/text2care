@@ -31,7 +31,7 @@ builder.Services.AddDbContext<AppIdentityDbContext>(options =>
 //     x.UseMySQL(builder.Configuration.GetConnectionString("MySQLIdentityConnection")));
 
 builder.Services.AddSingleton<IConnectionMultiplexer, ConnectionMultiplexer>(c => {
-    var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"), true);
+    var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("RedisLocal"), true);
     configuration.ClientName = "Text2CareApp-RedisCacheProvider";
     configuration.ReconnectRetryPolicy = new ExponentialRetry(5000, 10000);
     return ConnectionMultiplexer.Connect(configuration);

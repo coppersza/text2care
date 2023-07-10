@@ -94,6 +94,18 @@ export class ShopService {
     );
   }
 
+  getStoresUser(){
+    if (this.stores.length > 0){
+      return of(this.stores);
+    }
+    return this.http.get<IStore[]>(this.baseUrl + 'store/user').pipe(
+      map(response => {
+        this.stores = response;
+        return response;
+      })
+    );
+  }
+
   getProductTypes(){
     if (this.productTypes.length > 0){
       return of(this.productTypes);

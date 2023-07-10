@@ -15,5 +15,18 @@ namespace Core.Specifications
         {
             AddInclude(x => x.Country);
         }
+
+    }
+    public class StoreSpecEmail : BaseSpecification<Store>
+    {
+        public StoreSpecEmail()
+        {
+            AddInclude(x => x.Country);
+        }
+
+        public StoreSpecEmail(string email) : base(x => x.EmailAddress == email)
+        {
+            AddInclude(x => x.Country);
+        }
     }
 }

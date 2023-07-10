@@ -12,8 +12,8 @@ const routes: Routes = [
   // {path: '', component: HomeComponent, data:{breadcrumb: 'Home'}},
   // {path: '', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule), data:{breadcrumb: 'Shop'}},
   {path: '', component: ShopComponent},
-  {path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule), data:{breadcrumb: 'Shop'}},
-  {path: 'token', canActivate:[AuthGuard], loadChildren: () => import('./token/token.module').then(mod => mod.TokenModule), data:{breadcrumb: 'Token'}},
+  {path: 'donate', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule), data:{breadcrumb: 'Donate'}},
+  {path: 'tokens', canActivate:[AuthGuard], loadChildren: () => import('./token/token.module').then(mod => mod.TokenModule), data:{breadcrumb: 'Tokens'}},
 
   {path: 'test-error', component: TestErrorComponent, data:{breadcrumb: 'Test Errors'}},
   {path: 'server-error', component: ServerErrorComponent, data:{breadcrumb: 'Server Errors'}},

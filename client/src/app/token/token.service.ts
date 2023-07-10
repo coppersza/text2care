@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 export class TokenService {
   baseUrl = environment.apiUrl;
   tokens: IToken[] = [];
+  tokensStore: IToken[] = [];
   stores: IStore[] = [];
   productTypes: IProductType[] = [];
   pagination = new TokenPagination();
@@ -81,31 +82,8 @@ export class TokenService {
     if (token){
       return of(token);
     }
-    return this.http.get<IToken>(this.baseUrl + 'token/' + id);
+    return this.http.get<IToken>(this.baseUrl + 'tokenuser/' + id);
 
   }
 
-  getStores(){
-    if (this.stores.length > 0){
-      return of(this.stores);
-    }
-    return this.http.get<IStore[]>(this.baseUrl + 'store').pipe(
-      map(response => {
-        this.stores = response;
-        return response;
-      })
-    );
-  }
-
-  getProductTypes(){
-    if (this.productTypes.length > 0){
-      return of(this.productTypes);
-    }
-    return this.http.get<IProductType[]>(this.baseUrl + 'product/producttype').pipe(
-      map(response => {
-        this.productTypes = response;
-        return response;
-      })
-    );
-  }
 }

@@ -12,6 +12,8 @@ namespace Core.Interfaces
         Task<IReadOnlyList<Token>> GetTokensForUserAsync(string buyerEmail);
         Task<IReadOnlyList<Token>> GetTokensForUserAsync(TokenSpecParams specParams);
         Task<int> GetTokensForUserCountAsync(TokenSpecParams specParams);
-        Task<Token> GetTokenByIdAsync(string id, string buyerEmail);  
+        Task<Token> GetTokenByIdAsync(string id);
+        Task<Token> GetTokenByIdAsync(string id, string buyerEmail);
+        
     }
 }

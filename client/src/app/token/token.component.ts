@@ -4,6 +4,7 @@ import { IProductType } from '../shared/models/productType';
 import { TokenParams } from '../shared/models/tokenParams';
 import { IStore } from '../shared/models/store';
 import { TokenService } from './token.service';
+import { ShopService } from '../shop/shop.service';
 
 @Component({
   selector: 'app-token',
@@ -25,7 +26,8 @@ export class TokenComponent implements OnInit {
   ];
 
 
-  constructor(private tokenService: TokenService) {
+  constructor(private tokenService: TokenService,
+      private shopService : ShopService) {
     this.tokenParams = this.tokenService.getTokenParams();
    }
 
@@ -43,7 +45,7 @@ export class TokenComponent implements OnInit {
       });
   }
   getStores(){
-    this.tokenService.getStores().subscribe(response => {
+    this.shopService.getStores().subscribe(response => {
       //this.stores = [{storeUID: '00000000-0000-0000-0000-000000000000', storeName: 'All', description:'', imageURL:'', country:'', fullName:''}, ...response];
       this.stores = response;
     }, error => {
@@ -51,7 +53,7 @@ export class TokenComponent implements OnInit {
     });
   }
   getProductTypes(){
-    this.tokenService.getProductTypes().subscribe(response => {
+    this.shopService.getProductTypes().subscribe(response => {
       this.productTypes = response;
       this.productTypes = [{id: 0, name: 'All', description:''}, ...response];
     }, error => {
